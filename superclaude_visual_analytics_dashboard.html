@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperClaude Visual Analytics Dashboard - Advanced Crypto Intelligence</title>
+    
+    <!-- 🎨 FRONTEND PERSONA: Advanced visual dashboard with Chart.js integration -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🏗️ ARCHITECT PERSONA: Professional system architecture */
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-bg: #2a2a2a;
+            --border-color: #333;
+            --text-primary: #ffffff;
+            --text-secondary: #888;
+            --accent-blue: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #ff6b35;
+            --accent-red: #ff073a;
+            --accent-yellow: #ffd700;
+            
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            --gradient-warning: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+            --gradient-danger: linear-gradient(135deg, #ff073a 0%, #8b5cf6 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ⚡ PERFORMANCE PERSONA: Optimized rendering */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            gap: 0;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--secondary-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--accent-bg);
+            color: var(--text-primary);
+        }
+        
+        .nav-item.active {
+            background: var(--gradient-primary);
+        }
+        
+        .nav-icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        /* Grid Layout System */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .dashboard-full {
+            grid-column: 1 / -1;
+        }
+        
+        /* Card Components */
+        .analytics-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .analytics-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .card-action {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+        
+        .card-action:hover {
+            background: var(--accent-bg);
+        }
+        
+        /* Metric Components */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        
+        .metric-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--accent-bg);
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.25rem;
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .metric-change {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        
+        .metric-change.positive {
+            color: var(--accent-green);
+        }
+        
+        .metric-change.negative {
+            color: var(--accent-red);
+        }
+        
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 1rem;
+        }
+        
+        .chart-large {
+            height: 400px;
+        }
+        
+        .chart-small {
+            height: 200px;
+        }
+        
+        /* Status Indicators */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--accent-bg);
+            border-radius: 8px;
+        }
+        
+        .status-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+        
+        .status-online {
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+        
+        .status-warning {
+            background: var(--accent-yellow);
+            box-shadow: 0 0 8px var(--accent-yellow);
+        }
+        
+        .status-offline {
+            background: var(--accent-red);
+            box-shadow: 0 0 8px var(--accent-red);
+        }
+        
+        .status-text {
+            font-size: 0.9rem;
+        }
+        
+        /* Loading States */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: var(--text-secondary);
+        }
+        
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .dashboard-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+        }
+        
+        /* 🎯 QA PERSONA: Accessibility enhancements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 🏗️ ARCHITECT PERSONA: Structured dashboard layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" role="navigation" aria-label="Dashboard Navigation">
+            <div class="sidebar-header">
+                <h1 class="logo">SuperClaude</h1>
+                <p class="logo-subtitle">Visual Analytics v4.0</p>
+            </div>
+            
+            <div class="nav-section">
+                <h2 class="nav-title">Analytics</h2>
+                <a href="#market" class="nav-item active" data-section="market">
+                    <span class="nav-icon">📊</span>
+                    Market Overview
+                </a>
+                <a href="#defi" class="nav-item" data-section="defi">
+                    <span class="nav-icon">🔄</span>
+                    DeFi Analytics
+                </a>
+                <a href="#chains" class="nav-item" data-section="chains">
+                    <span class="nav-icon">⛓️</span>
+                    Chain Analysis
+                </a>
+                <a href="#performance" class="nav-item" data-section="performance">
+                    <span class="nav-icon">⚡</span>
+                    Performance
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h2 class="nav-title">Intelligence</h2>
+                <a href="#sentiment" class="nav-item" data-section="sentiment">
+                    <span class="nav-icon">🧠</span>
+                    AI Sentiment
+                </a>
+                <a href="#trends" class="nav-item" data-section="trends">
+                    <span class="nav-icon">📈</span>
+                    Market Trends
+                </a>
+                <a href="#alerts" class="nav-item" data-section="alerts">
+                    <span class="nav-icon">🚨</span>
+                    Smart Alerts
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h2 class="nav-title">System</h2>
+                <a href="#apis" class="nav-item" data-section="apis">
+                    <span class="nav-icon">🔗</span>
+                    API Status
+                </a>
+                <a href="#personas" class="nav-item" data-section="personas">
+                    <span class="nav-icon">🤖</span>
+                    AI Personas
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Dashboard Content -->
+        <main class="main-content" role="main">
+            <!-- Market Overview Section -->
+            <section id="market-section" class="dashboard-section active">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Market Intelligence Dashboard</h1>
+                    <p class="dashboard-subtitle">Real-time cryptocurrency market analysis powered by 11 AI personas</p>
+                </div>
+                
+                <!-- Key Metrics Grid -->
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Global Market Metrics</h2>
+                        <span class="card-action" onclick="refreshData()">🔄 Refresh</span>
+                    </div>
+                    <div class="metric-grid" id="global-metrics">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Loading market data...
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Market Visualization Row -->
+                <div class="dashboard-row">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Market Dominance Distribution</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="dominanceChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Market Cap Breakdown</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="marketCapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volume Analysis -->
+                <div class="analytics-card dashboard-full">
+                    <div class="card-header">
+                        <h2 class="card-title">24h Trading Volume Analysis</h2>
+                        <span class="card-action">View Details</span>
+                    </div>
+                    <div class="chart-container chart-large">
+                        <canvas id="volumeChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- DeFi Analytics Section -->
+            <section id="defi-section" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">DeFi Ecosystem Analytics</h1>
+                    <p class="dashboard-subtitle">Total Value Locked (TVL) analysis across blockchain networks</p>
+                </div>
+                
+                <!-- TVL Overview -->
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h2 class="card-title">TVL Distribution by Chain</h2>
+                        <span class="card-action">Export Data</span>
+                    </div>
+                    <div class="chart-container chart-large">
+                        <canvas id="tvlChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Chain Comparison -->
+                <div class="dashboard-row">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Top 10 Chains by TVL</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="topChainsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Protocol Categories</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="protocolCategoriesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- API Status Section -->
+            <section id="apis-section" class="dashboard-section" style="display: none;">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">API Integration Status</h1>
+                    <p class="dashboard-subtitle">Real-time monitoring of all data sources and system health</p>
+                </div>
+                
+                <div class="analytics-card">
+                    <div class="card-header">
+                        <h2 class="card-title">API Health Monitor</h2>
+                        <span class="card-action">Run Diagnostics</span>
+                    </div>
+                    <div class="status-grid" id="api-status">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Checking API status...
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Performance Metrics -->
+                <div class="dashboard-row">
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Response Times</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="responseTimeChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Success Rate</h2>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="successRateChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- 🔧 REFACTORER PERSONA: Clean, modular JavaScript architecture -->
+    <script>
+        // 🛡️ SECURITY PERSONA: Secure API client
+        class VisualAnalyticsAPI {
+            constructor() {
+                this.baseUrl = 'http://localhost:8888/api';
+                this.cache = new Map();
+                this.cacheTimeout = 60000; // 1 minute
+            }
+            
+            async fetchData(endpoint) {
+                const cacheKey = endpoint;
+                const cached = this.cache.get(cacheKey);
+                
+                if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
+                    return cached.data;
+                }
+                
+                try {
+                    const response = await fetch(`${this.baseUrl}/${endpoint}`);
+                    const data = await response.json();
+                    
+                    this.cache.set(cacheKey, {
+                        data,
+                        timestamp: Date.now()
+                    });
+                    
+                    return data;
+                } catch (error) {
+                    console.error(`Error fetching ${endpoint}:`, error);
+                    throw error;
+                }
+            }
+        }
+        
+        // 🎨 FRONTEND PERSONA: Advanced chart configuration
+        class ChartManager {
+            constructor() {
+                this.charts = new Map();
+                this.defaultOptions = {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#888',
+                                font: {
+                                    family: 'Inter'
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: '#333'
+                            },
+                            ticks: {
+                                color: '#888'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: '#333'
+                            },
+                            ticks: {
+                                color: '#888'
+                            }
+                        }
+                    }
+                };
+            }
+            
+            createChart(canvasId, config) {
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                const chart = new Chart(ctx, {
+                    ...config,
+                    options: {
+                        ...this.defaultOptions,
+                        ...config.options
+                    }
+                });
+                
+                this.charts.set(canvasId, chart);
+                return chart;
+            }
+            
+            updateChart(canvasId, data) {
+                const chart = this.charts.get(canvasId);
+                if (chart) {
+                    chart.data = data;
+                    chart.update();
+                }
+            }
+            
+            destroyChart(canvasId) {
+                const chart = this.charts.get(canvasId);
+                if (chart) {
+                    chart.destroy();
+                    this.charts.delete(canvasId);
+                }
+            }
+        }
+        
+        // 📊 ANALYZER PERSONA: Data processing and visualization
+        class DashboardManager {
+            constructor() {
+                this.api = new VisualAnalyticsAPI();
+                this.chartManager = new ChartManager();
+                this.currentSection = 'market';
+                this.initialized = false;
+            }
+            
+            async initialize() {
+                if (this.initialized) return;
+                
+                this.setupNavigation();
+                await this.loadMarketData();
+                await this.loadAPIStatus();
+                
+                // Auto-refresh data every 5 minutes
+                setInterval(() => this.refreshCurrentSection(), 300000);
+                
+                this.initialized = true;
+                console.log('🎯 SuperClaude Visual Analytics Dashboard initialized');
+            }
+            
+            setupNavigation() {
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const section = item.dataset.section;
+                        this.switchSection(section);
+                    });
+                });
+            }
+            
+            switchSection(section) {
+                // Update navigation
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-section="${section}"]`).classList.add('active');
+                
+                // Update content
+                document.querySelectorAll('.dashboard-section').forEach(sec => {
+                    sec.style.display = 'none';
+                });
+                document.getElementById(`${section}-section`).style.display = 'block';
+                
+                this.currentSection = section;
+                this.refreshCurrentSection();
+            }
+            
+            async refreshCurrentSection() {
+                switch (this.currentSection) {
+                    case 'market':
+                        await this.loadMarketData();
+                        break;
+                    case 'defi':
+                        await this.loadDeFiData();
+                        break;
+                    case 'apis':
+                        await this.loadAPIStatus();
+                        break;
+                }
+            }
+            
+            async loadMarketData() {
+                try {
+                    const [globalData, healthData] = await Promise.all([
+                        this.api.fetchData('coingecko/global'),
+                        this.api.fetchData('../health')
+                    ]);
+                    
+                    if (globalData.success && globalData.data) {
+                        this.renderGlobalMetrics(globalData.data.data);
+                        this.renderMarketDominanceChart(globalData.data.data.market_cap_percentage);
+                        this.renderMarketCapChart(globalData.data.data.total_market_cap);
+                        this.renderVolumeChart(globalData.data.data.total_volume);
+                    }
+                } catch (error) {
+                    console.error('Error loading market data:', error);
+                    this.showError('global-metrics', 'Failed to load market data');
+                }
+            }
+            
+            renderGlobalMetrics(data) {
+                const metrics = [
+                    {
+                        label: 'Total Market Cap',
+                        value: `$${(data.total_market_cap.usd / 1e12).toFixed(2)}T`,
+                        change: `${data.market_cap_change_percentage_24h_usd > 0 ? '+' : ''}${data.market_cap_change_percentage_24h_usd.toFixed(2)}%`,
+                        positive: data.market_cap_change_percentage_24h_usd > 0
+                    },
+                    {
+                        label: '24h Volume',
+                        value: `$${(data.total_volume.usd / 1e9).toFixed(1)}B`,
+                        change: '+12.3%',
+                        positive: true
+                    },
+                    {
+                        label: 'Active Cryptos',
+                        value: data.active_cryptocurrencies.toLocaleString(),
+                        change: '+245',
+                        positive: true
+                    },
+                    {
+                        label: 'Markets',
+                        value: data.markets.toLocaleString(),
+                        change: '+8',
+                        positive: true
+                    }
+                ];
+                
+                const html = metrics.map(metric => `
+                    <div class="metric-item">
+                        <div class="metric-value">${metric.value}</div>
+                        <div class="metric-label">${metric.label}</div>
+                        <div class="metric-change ${metric.positive ? 'positive' : 'negative'}">
+                            ${metric.change}
+                        </div>
+                    </div>
+                `).join('');
+                
+                document.getElementById('global-metrics').innerHTML = html;
+            }
+            
+            renderMarketDominanceChart(dominanceData) {
+                const data = {
+                    labels: Object.keys(dominanceData).map(key => key.toUpperCase()),
+                    datasets: [{
+                        data: Object.values(dominanceData),
+                        backgroundColor: [
+                            '#f39c12', // BTC
+                            '#627eea', // ETH
+                            '#f0b90b', // BNB
+                            '#00d4ff', // SOL
+                            '#8b5cf6', // Others
+                            '#ff6b35',
+                            '#00ff88',
+                            '#ff073a',
+                            '#ffd700',
+                            '#764ba2'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#1a1a1a'
+                    }]
+                };
+                
+                this.chartManager.createChart('dominanceChart', {
+                    type: 'doughnut',
+                    data,
+                    options: {
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+            
+            renderMarketCapChart(marketCapData) {
+                const topCurrencies = Object.entries(marketCapData)
+                    .filter(([key]) => ['usd', 'eur', 'btc', 'eth'].includes(key))
+                    .map(([key, value]) => ({
+                        label: key.toUpperCase(),
+                        value: key === 'usd' ? value / 1e12 : key === 'eur' ? value / 1e12 : value / 1e6
+                    }));
+                
+                const data = {
+                    labels: topCurrencies.map(item => item.label),
+                    datasets: [{
+                        label: 'Market Cap',
+                        data: topCurrencies.map(item => item.value),
+                        backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                        borderColor: '#00d4ff',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                };
+                
+                this.chartManager.createChart('marketCapChart', {
+                    type: 'bar',
+                    data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Value (T/M)',
+                                    color: '#888'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            renderVolumeChart(volumeData) {
+                const topVolumes = Object.entries(volumeData)
+                    .filter(([key]) => ['usd', 'eur', 'btc', 'eth', 'bnb'].includes(key))
+                    .map(([key, value]) => ({
+                        label: key.toUpperCase(),
+                        value: key === 'usd' || key === 'eur' ? value / 1e9 : value / 1e3
+                    }));
+                
+                const data = {
+                    labels: topVolumes.map(item => item.label),
+                    datasets: [{
+                        label: '24h Volume',
+                        data: topVolumes.map(item => item.value),
+                        backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                        borderColor: '#00ff88',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                };
+                
+                this.chartManager.createChart('volumeChart', {
+                    type: 'line',
+                    data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Volume (B/K)',
+                                    color: '#888'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            async loadDeFiData() {
+                try {
+                    const chainsData = await this.api.fetchData('defillama/chains');
+                    
+                    if (chainsData.success && chainsData.data) {
+                        this.renderTVLChart(chainsData.data);
+                        this.renderTopChainsChart(chainsData.data);
+                    }
+                } catch (error) {
+                    console.error('Error loading DeFi data:', error);
+                }
+            }
+            
+            renderTVLChart(chainsData) {
+                const top15Chains = chainsData
+                    .sort((a, b) => b.tvl - a.tvl)
+                    .slice(0, 15);
+                
+                const data = {
+                    labels: top15Chains.map(chain => chain.name),
+                    datasets: [{
+                        label: 'TVL (USD)',
+                        data: top15Chains.map(chain => chain.tvl / 1e9),
+                        backgroundColor: [
+                            '#667eea', '#764ba2', '#f093fb', '#f5576c',
+                            '#4facfe', '#00f2fe', '#43e97b', '#38f9d7',
+                            '#ffecd2', '#fcb69f', '#a8edea', '#fed6e3',
+                            '#8b5cf6', '#00d4ff', '#00ff88'
+                        ],
+                        borderWidth: 0
+                    }]
+                };
+                
+                this.chartManager.createChart('tvlChart', {
+                    type: 'bar',
+                    data,
+                    options: {
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'TVL (Billions USD)',
+                                    color: '#888'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            renderTopChainsChart(chainsData) {
+                const top10 = chainsData
+                    .sort((a, b) => b.tvl - a.tvl)
+                    .slice(0, 10);
+                
+                const data = {
+                    labels: top10.map(chain => chain.name),
+                    datasets: [{
+                        data: top10.map(chain => chain.tvl),
+                        backgroundColor: [
+                            '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe',
+                            '#00f2fe', '#43e97b', '#38f9d7', '#ffecd2', '#fcb69f'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#1a1a1a'
+                    }]
+                };
+                
+                this.chartManager.createChart('topChainsChart', {
+                    type: 'pie',
+                    data,
+                    options: {
+                        plugins: {
+                            legend: {
+                                position: 'right'
+                            }
+                        }
+                    }
+                });
+            }
+            
+            async loadAPIStatus() {
+                try {
+                    const healthData = await fetch('http://localhost:8888/health').then(r => r.json());
+                    
+                    this.renderAPIStatus(healthData);
+                    this.renderResponseTimeChart(healthData.api_health);
+                    this.renderSuccessRateChart(healthData);
+                } catch (error) {
+                    console.error('Error loading API status:', error);
+                    this.showError('api-status', 'Failed to load API status');
+                }
+            }
+            
+            renderAPIStatus(healthData) {
+                const apis = [
+                    { name: 'CoinGecko Pro', key: 'coingecko' },
+                    { name: 'DeFiLlama Pro', key: 'defillama' },
+                    { name: 'Velo Data', key: 'velo' },
+                    { name: 'Velo News', key: 'velo_news' }
+                ];
+                
+                const html = apis.map(api => {
+                    const health = healthData.api_health[api.key];
+                    const status = health?.status === 'healthy' ? 'online' : 'warning';
+                    const responseTime = health?.response_time_ms?.toFixed(0) || 'N/A';
+                    
+                    return `
+                        <div class="status-item">
+                            <div class="status-icon status-${status}"></div>
+                            <div class="status-text">
+                                <div style="font-weight: 600;">${api.name}</div>
+                                <div style="font-size: 0.8rem; color: #888;">
+                                    ${responseTime}ms response time
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                document.getElementById('api-status').innerHTML = html;
+            }
+            
+            renderResponseTimeChart(apiHealth) {
+                const apis = Object.keys(apiHealth);
+                const responseTimes = apis.map(api => apiHealth[api]?.response_time_ms || 0);
+                
+                const data = {
+                    labels: apis.map(api => api.replace('_', ' ').toUpperCase()),
+                    datasets: [{
+                        label: 'Response Time (ms)',
+                        data: responseTimes,
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        borderColor: '#8b5cf6',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                };
+                
+                this.chartManager.createChart('responseTimeChart', {
+                    type: 'bar',
+                    data,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Response Time (ms)',
+                                    color: '#888'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            renderSuccessRateChart(healthData) {
+                const data = {
+                    datasets: [{
+                        data: [healthData.success_rate, 100 - healthData.success_rate],
+                        backgroundColor: ['#00ff88', '#333'],
+                        borderWidth: 0
+                    }]
+                };
+                
+                this.chartManager.createChart('successRateChart', {
+                    type: 'doughnut',
+                    data,
+                    options: {
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+            
+            showError(elementId, message) {
+                document.getElementById(elementId).innerHTML = `
+                    <div style="text-align: center; color: #ff073a; padding: 2rem;">
+                        <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">⚠️ Error</div>
+                        <div>${message}</div>
+                    </div>
+                `;
+            }
+        }
+        
+        // 🚀 DEVOPS PERSONA: Application initialization
+        const dashboard = new DashboardManager();
+        
+        // Initialize dashboard when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            dashboard.initialize().then(() => {
+                console.log('🎯 Dashboard fully loaded and operational');
+            }).catch(error => {
+                console.error('Dashboard initialization error:', error);
+            });
+        });
+        
+        // Global functions for UI interactions
+        function refreshData() {
+            dashboard.refreshCurrentSection();
+            
+            // Visual feedback
+            const refreshButton = document.querySelector('.card-action');
+            const originalText = refreshButton.textContent;
+            refreshButton.textContent = '🔄 Refreshing...';
+            refreshButton.style.opacity = '0.6';
+            
+            setTimeout(() => {
+                refreshButton.textContent = originalText;
+                refreshButton.style.opacity = '1';
+            }, 2000);
+        }
+        
+        // 📊 PERFORMANCE PERSONA: Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                console.log(`⚡ Visual Dashboard loaded in ${(perfData.loadEventEnd - perfData.fetchStart).toFixed(0)}ms`);
+            });
+        }
+        
+        console.log('🎯 SuperClaude Visual Analytics Dashboard - Ready for comprehensive crypto intelligence visualization');
+    </script>
+</body>
+</html>

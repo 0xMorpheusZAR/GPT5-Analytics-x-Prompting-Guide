@@ -478,6 +478,19 @@ class SuperClaudeServer:
             """Main dashboard"""
             return render_template_string(self.get_dashboard_template())
         
+        # Static HTML file serving route
+        @self.app.route('/<path:filename>')
+        def static_files(filename):
+            """Serve static HTML files"""
+            if filename.endswith('.html'):
+                try:
+                    current_dir = os.path.dirname(os.path.abspath(__file__))
+                    return send_from_directory(current_dir, filename)
+                except Exception as e:
+                    logger.error(f"Error serving static file {filename}: {e}")
+                    return f"File not found: {filename}", 404
+            return "Not found", 404
+        
         # Health and status routes
         @self.app.route('/health')
         def health_check():

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔥 Live Crypto Data Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0; padding: 20px; background: #0a0a0a; color: #00ff41;
+        }
+        .header {
+            text-align: center; margin-bottom: 40px;
+            background: linear-gradient(135deg, #001100 0%, #003300 100%);
+            padding: 20px; border-radius: 10px; border: 2px solid #00ff41;
+        }
+        .header h1 {
+            margin: 0; font-size: 2.5em; color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+        .status {
+            display: inline-block; padding: 5px 15px; margin: 5px;
+            background: #001100; border: 1px solid #00ff41; border-radius: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px #00ff41; }
+            50% { box-shadow: 0 0 15px #00ff41; }
+        }
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px; margin: 20px 0;
+        }
+        .card {
+            background: #001100; padding: 20px; border-radius: 10px;
+            border: 2px solid #00ff41; box-shadow: 0 0 10px rgba(0,255,65,0.3);
+        }
+        .card h2 {
+            margin-top: 0; color: #00ff41; text-shadow: 0 0 5px #00ff41;
+        }
+        .metric {
+            margin: 15px 0; padding: 10px; background: #002200;
+            border-radius: 5px; border-left: 4px solid #00ff41;
+        }
+        .metric-value {
+            font-size: 1.8em; font-weight: bold; color: #00ff41;
+        }
+        .metric-label {
+            font-size: 0.9em; color: #66ff66; margin-top: 5px;
+        }
+        .chain-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px; margin: 5px 0; background: #002200; border-radius: 5px;
+            border-left: 4px solid #00ff41;
+        }
+        .chain-name { font-weight: bold; }
+        .chain-tvl { color: #66ff66; }
+        .loading {
+            text-align: center; padding: 40px; font-size: 1.2em;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        .error { color: #ff4444; background: #330000; padding: 15px; border-radius: 5px; }
+        .success { color: #00ff41; }
+        .timestamp {
+            text-align: center; margin: 20px 0; font-size: 0.9em; color: #66ff66;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔥 LIVE CRYPTO DATA STREAMING</h1>
+        <div>
+            <span class="status" id="api-status">🔄 Loading APIs...</span>
+            <span class="status" id="data-status">⏳ Fetching Data...</span>
+        </div>
+    </div>
+
+    <div id="error-container"></div>
+    <div id="loading" class="loading">🚀 Initializing live data streams...</div>
+    <div id="content" style="display: none;">
+        
+        <div class="grid">
+            <!-- Global Market Metrics -->
+            <div class="card">
+                <h2>🌍 Global Market Metrics</h2>
+                <div id="global-metrics">Loading...</div>
+            </div>
+
+            <!-- Market Dominance -->
+            <div class="card">
+                <h2>👑 Market Dominance</h2>
+                <div id="market-dominance">Loading...</div>
+            </div>
+
+            <!-- Top DeFi Chains -->
+            <div class="card">
+                <h2>⛓️ Top DeFi Chains by TVL</h2>
+                <div id="defi-chains">Loading...</div>
+            </div>
+
+            <!-- API Health -->
+            <div class="card">
+                <h2>🏥 API Health Status</h2>
+                <div id="api-health">Loading...</div>
+            </div>
+        </div>
+
+        <div class="timestamp" id="last-update">Last updated: Loading...</div>
+    </div>
+
+    <script>
+        class LiveDataDashboard {
+            constructor() {
+                this.apiBase = 'http://localhost:8888/api';
+                this.updateInterval = 30000; // 30 seconds
+                this.init();
+            }
+
+            async init() {
+                console.log('🚀 Initializing Live Data Dashboard');
+                
+                try {
+                    await this.loadAllData();
+                    this.showContent();
+                    this.startAutoRefresh();
+                } catch (error) {
+                    this.showError('Failed to initialize dashboard: ' + error.message);
+                }
+            }
+
+            async loadAllData() {
+                const loadingEl = document.getElementById('loading');
+                loadingEl.innerHTML = '📊 Loading market data...';
+
+                try {
+                    // Load CoinGecko Global Data
+                    const globalResponse = await fetch(`${this.apiBase}/coingecko/global`);
+                    const globalData = await globalResponse.json();
+                    console.log('Global Data:', globalData);
+
+                    if (globalData.success && globalData.data && globalData.data.data) {
+                        this.renderGlobalMetrics(globalData.data.data);
+                        this.renderMarketDominance(globalData.data.data.market_cap_percentage);
+                        document.getElementById('api-status').innerHTML = '✅ CoinGecko Online';
+                    } else {
+                        throw new Error('Invalid global data structure');
+                    }
+
+                    loadingEl.innerHTML = '⛓️ Loading DeFi data...';
+
+                    // Load DeFiLlama Chains Data
+                    const chainsResponse = await fetch(`${this.apiBase}/defillama/chains`);
+                    const chainsData = await chainsResponse.json();
+                    console.log('Chains Data:', chainsData);
+
+                    if (chainsData.success && chainsData.data) {
+                        this.renderDefiChains(chainsData.data.slice(0, 10));
+                    } else {
+                        throw new Error('Invalid chains data structure');
+                    }
+
+                    loadingEl.innerHTML = '🏥 Loading API health...';
+
+                    // Load API Health
+                    const healthResponse = await fetch(`${this.apiBase}/../health`);
+                    const healthData = await healthResponse.json();
+                    console.log('Health Data:', healthData);
+                    
+                    this.renderApiHealth(healthData);
+                    
+                    document.getElementById('data-status').innerHTML = '🟢 Live Data Active';
+                    document.getElementById('last-update').innerHTML = `Last updated: ${new Date().toLocaleTimeString()}`;
+
+                } catch (error) {
+                    console.error('Data loading error:', error);
+                    throw error;
+                }
+            }
+
+            renderGlobalMetrics(data) {
+                const metrics = [
+                    {
+                        label: 'Total Market Cap',
+                        value: `$${(data.total_market_cap.usd / 1e12).toFixed(2)}T`,
+                        change: `${data.market_cap_change_percentage_24h_usd > 0 ? '+' : ''}${data.market_cap_change_percentage_24h_usd.toFixed(2)}%`
+                    },
+                    {
+                        label: '24h Volume',
+                        value: `$${(data.total_volume.usd / 1e9).toFixed(1)}B`,
+                        change: 'Live Data'
+                    },
+                    {
+                        label: 'Active Cryptocurrencies',
+                        value: data.active_cryptocurrencies.toLocaleString(),
+                        change: `${data.markets.toLocaleString()} markets`
+                    }
+                ];
+
+                const html = metrics.map(metric => `
+                    <div class="metric">
+                        <div class="metric-value">${metric.value}</div>
+                        <div class="metric-label">${metric.label}</div>
+                        <div style="font-size: 0.8em; color: #66ff66; margin-top: 3px;">${metric.change}</div>
+                    </div>
+                `).join('');
+
+                document.getElementById('global-metrics').innerHTML = html;
+            }
+
+            renderMarketDominance(data) {
+                const dominance = Object.entries(data)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 5);
+
+                const html = dominance.map(([coin, percentage]) => `
+                    <div class="metric">
+                        <div class="metric-value">${percentage.toFixed(1)}%</div>
+                        <div class="metric-label">${coin.toUpperCase()}</div>
+                    </div>
+                `).join('');
+
+                document.getElementById('market-dominance').innerHTML = html;
+            }
+
+            renderDefiChains(chains) {
+                const html = chains.map(chain => `
+                    <div class="chain-item">
+                        <div class="chain-name">${chain.name}</div>
+                        <div class="chain-tvl">$${(chain.tvl / 1e9).toFixed(2)}B TVL</div>
+                    </div>
+                `).join('');
+
+                document.getElementById('defi-chains').innerHTML = html;
+            }
+
+            renderApiHealth(health) {
+                const services = health.services || {};
+                const html = Object.entries(services).map(([service, status]) => `
+                    <div class="metric">
+                        <div class="metric-value">${status === 'healthy' ? '🟢' : '🔴'} ${status.toUpperCase()}</div>
+                        <div class="metric-label">${service.replace('_', ' ').toUpperCase()}</div>
+                    </div>
+                `).join('') + `
+                    <div class="metric">
+                        <div class="metric-value">${health.success_rate ? health.success_rate.toFixed(1) : '0'}%</div>
+                        <div class="metric-label">SUCCESS RATE</div>
+                    </div>
+                `;
+
+                document.getElementById('api-health').innerHTML = html;
+            }
+
+            showContent() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }
+
+            showError(message) {
+                const errorContainer = document.getElementById('error-container');
+                errorContainer.innerHTML = `<div class="error">❌ ${message}</div>`;
+                document.getElementById('loading').style.display = 'none';
+            }
+
+            startAutoRefresh() {
+                console.log(`🔄 Starting auto-refresh every ${this.updateInterval/1000} seconds`);
+                
+                setInterval(async () => {
+                    try {
+                        await this.loadAllData();
+                        console.log('✅ Data refreshed successfully');
+                    } catch (error) {
+                        console.error('❌ Auto-refresh failed:', error);
+                    }
+                }, this.updateInterval);
+            }
+        }
+
+        // Initialize dashboard when page loads
+        window.addEventListener('load', () => {
+            new LiveDataDashboard();
+        });
+    </script>
+</body>
+</html>
