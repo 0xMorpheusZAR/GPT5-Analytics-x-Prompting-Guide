@@ -1,0 +1,25 @@
+# SuperClaude Local Server Requirements
+# Core dependencies for the unified cryptocurrency API server
+
+# Web Framework
+Flask==3.0.0
+Flask-CORS==4.0.0
+Werkzeug==3.0.1
+
+# HTTP Client & Networking
+requests==2.31.0
+urllib3==2.1.0
+
+# Data Processing
+pandas==2.1.4
+numpy==1.25.2
+
+# Logging & Monitoring
+psutil==5.9.6
+
+# Development & Testing (optional)
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Production WSGI Server (optional)
+gunicorn==21.2.0

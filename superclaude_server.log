@@ -1,0 +1,12 @@
+2025-08-08 16:32:17,309 - __main__ - INFO - Starting SuperClaude API Server on port 8888
+2025-08-08 16:32:17,309 - __main__ - INFO - Dashboard available at: http://localhost:8888
+2025-08-08 16:32:17,309 - __main__ - INFO - API endpoints:
+2025-08-08 16:32:17,309 - __main__ - INFO -   CoinGecko Pro: /api/coingecko/*
+2025-08-08 16:32:17,309 - __main__ - INFO -   DeFiLlama Pro: /api/defillama/*
+2025-08-08 16:32:17,309 - __main__ - INFO -   Velo Data: /api/velo/*
+2025-08-08 16:32:17,309 - __main__ - INFO -   Health Check: /health
+2025-08-08 16:32:17,319 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8888
+ * Running on http://192.168.0.100:8888
+2025-08-08 16:32:17,319 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

@@ -1,0 +1,130 @@
+{
+  "auth_pattern_testing": {
+    "api": {
+      "status_code": 200,
+      "success": true,
+      "auth_string": "api:25965dc53c424038964e2f720270bece",
+      "encoded": "YXBpOjI1OTY1ZGM1M2M0MjQwMzg5NjRlMmY3MjAyNzBiZWNl",
+      "data": "ok"
+    },
+    "key": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "key:25965dc53c424038964e2f720270bece",
+      "encoded": "a2V5OjI1OTY1ZGM1M2M0MjQwMzg5NjRlMmY3MjAyNzBiZWNl",
+      "error": "api key not authorized"
+    },
+    "token": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "token:25965dc53c424038964e2f720270bece",
+      "encoded": "dG9rZW46MjU5NjVkYzUzYzQyNDAzODk2NGUyZjcyMDI3MGJlY2U=",
+      "error": "api key not authorized"
+    },
+    "plain": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "25965dc53c424038964e2f720270bece",
+      "encoded": "MjU5NjVkYzUzYzQyNDAzODk2NGUyZjcyMDI3MGJlY2U=",
+      "error": "api key not authorized"
+    },
+    "user": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "user:25965dc53c424038964e2f720270bece",
+      "encoded": "dXNlcjoyNTk2NWRjNTNjNDI0MDM4OTY0ZTJmNzIwMjcwYmVjZQ==",
+      "error": "api key not authorized"
+    },
+    "velo": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "velo:25965dc53c424038964e2f720270bece",
+      "encoded": "dmVsbzoyNTk2NWRjNTNjNDI0MDM4OTY0ZTJmNzIwMjcwYmVjZQ==",
+      "error": "api key not authorized"
+    },
+    "client": {
+      "status_code": 403,
+      "success": false,
+      "auth_string": "client:25965dc53c424038964e2f720270bece",
+      "encoded": "Y2xpZW50OjI1OTY1ZGM1M2M0MjQwMzg5NjRlMmY3MjAyNzBiZWNl",
+      "error": "api key not authorized"
+    }
+  },
+  "endpoint_testing": {
+    "futures": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 1161.1127853393555,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nbinance-futures,1000000BABYDOGE,1MBABYDOGEUSDT,1728255600000\nbybit,1000000BABYDOGE,1000000BABYDOGEUSDT,1718114400000\nbinance-futures,1000000BOB,1000000BOBUSDT,1749135600000\nbybit,1000000MOG,1000000MOGUSDT,1715878800000\nbinance-futures,1000000MOG,1000000MOGUSDT,1730991600000\nbybit,1000000PEIPEI,1000000PEIPEIUSDT,1720123200000\nbybit,10000COQ,10000COQUSDT,1710237600000\nbybit,10000ELON,10000ELONUSDT,1739199600000\nbybit,10000LADYS,10000LADYSUSDT,1708905600000\nbybit,10000QU"
+    },
+    "futures/columns": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 1151.139259338379,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nbinance-futures,1000000BABYDOGE,1MBABYDOGEUSDT,1728255600000\nbybit,1000000BABYDOGE,1000000BABYDOGEUSDT,1718114400000\nbinance-futures,1000000BOB,1000000BOBUSDT,1749135600000\nbybit,1000000MOG,1000000MOGUSDT,1715878800000\nbinance-futures,1000000MOG,1000000MOGUSDT,1730991600000\nbybit,1000000PEIPEI,1000000PEIPEIUSDT,1720123200000\nbybit,10000COQ,10000COQUSDT,1710237600000\nbybit,10000ELON,10000ELONUSDT,1739199600000\nbybit,10000LADYS,10000LADYSUSDT,1708905600000\nbybit,10000QU"
+    },
+    "options": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 727.1873950958252,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nderibit,BTC,BTC,1617206400000\nderibit,ETH,ETH,1617206400000\n"
+    },
+    "options/columns": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 318.3917999267578,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nderibit,BTC,BTC,1617206400000\nderibit,ETH,ETH,1617206400000\n"
+    },
+    "spot": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 301.0749816894531,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nokex,10000000AIDOGE,AIDOGE-USDT,1727391600000\nbinance,1000000BABYDOGE,1MBABYDOGEUSDT,1728255600000\nbybit-spot,1000000BABYDOGE,BABYDOGEUSDT,1727305200000\nokex,1000000BABYDOGE,BABYDOGE-USDT,1727391600000\nbybit-spot,1000000MOG,MOGUSDT,1727305200000\nbybit-spot,10000COQ,COQUSDT,1727305200000\nokex,10000ELON,ELON-USDT,1739199600000\nbybit-spot,10000LADYS,LADYSUSDT,1727305200000\nbybit-spot,10000WEN,WENUSDT,1727305200000\nokex,1000BONK,BONK-USDT,1727391600000\ncoinbase,1000BONK,B"
+    },
+    "spot/columns": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 971.9994068145752,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "exchange,coin,product,begin\nokex,10000000AIDOGE,AIDOGE-USDT,1727391600000\nbinance,1000000BABYDOGE,1MBABYDOGEUSDT,1728255600000\nbybit-spot,1000000BABYDOGE,BABYDOGEUSDT,1727305200000\nokex,1000000BABYDOGE,BABYDOGE-USDT,1727391600000\nbybit-spot,1000000MOG,MOGUSDT,1727305200000\nbybit-spot,10000COQ,COQUSDT,1727305200000\nokex,10000ELON,ELON-USDT,1739199600000\nbybit-spot,10000LADYS,LADYSUSDT,1727305200000\nbybit-spot,10000WEN,WENUSDT,1727305200000\nokex,1000BONK,BONK-USDT,1727391600000\ncoinbase,1000BONK,B"
+    },
+    "status": {
+      "success": false,
+      "status_code": 200,
+      "data": null,
+      "response_time_ms": 710.7436656951904,
+      "error": "Invalid JSON: Expecting value: line 1 column 1 (char 0)",
+      "raw_response": "ok"
+    },
+    "market/overview": {
+      "success": false,
+      "status_code": 400,
+      "data": null,
+      "response_time_ms": 315.60206413269043,
+      "error": "HTTP 400: ",
+      "raw_response": ""
+    },
+    "flows/institutional": {
+      "success": false,
+      "status_code": 400,
+      "data": null,
+      "response_time_ms": 786.4999771118164,
+      "error": "HTTP 400: ",
+      "raw_response": ""
+    }
+  },
+  "working_pattern": "api",
+  "success_rate": 0.0,
+  "timestamp": "2025-08-08T14:22:18.064945+00:00"
+}

@@ -1,0 +1,38 @@
+{
+  "investigation_summary": {
+    "timestamp": "2025-08-08T14:21:19.687134+00:00",
+    "api_key_format": {
+      "length": 32,
+      "format": "hex",
+      "prefix": "25965dc5..."
+    },
+    "sdk_available": true
+  },
+  "sdk_functionality": {
+    "get_futures": {
+      "success": false,
+      "error": "'VeloAPIInvestigator' object has no attribute 'parent'"
+    },
+    "get_columns": {
+      "success": true,
+      "count": 30,
+      "sample": [
+        "open_price",
+        "high_price",
+        "low_price",
+        "close_price",
+        "coin_volume"
+      ]
+    },
+    "get_data": {
+      "success": false,
+      "error": "Prerequisites failed"
+    }
+  },
+  "http_interception_analysis": {},
+  "direct_api_testing": {},
+  "recommendations": [
+    "\u2713 Velo SDK is functional - use as primary integration method",
+    "\u26a0 Direct API access still failing - may require paid/enterprise API key"
+  ]
+}

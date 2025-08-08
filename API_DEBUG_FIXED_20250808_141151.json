@@ -1,0 +1,220 @@
+{
+  "debug_session": {
+    "timestamp": "20250808_141151",
+    "tool": "SuperClaude API Debug - Fixed",
+    "focus": "DeFiLlama Pro & Velo Data API issues"
+  },
+  "defillama_pro": {
+    "working": [
+      "Alt Yields",
+      "Alt Stables"
+    ],
+    "failed": [
+      "Protocols List",
+      "Protocol TVL",
+      "Chains TVL",
+      "Yields Data",
+      "Pools Data",
+      "Stablecoins"
+    ],
+    "details": {
+      "Protocols List": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 651.3533592224121,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 42.72818565368652,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 102.74982452392578,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 613.3871078491211,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Protocol TVL": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 620.8596229553223,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 54.10170555114746,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 47.24860191345215,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 662.4388694763184,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Chains TVL": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 620.8381652832031,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 153.07044982910156,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 27.066707611083984,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 657.5441360473633,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Yields Data": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 583.5669040679932,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 286.6806983947754,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 37.76907920837402,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 629.7895908355713,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Pools Data": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 630.2857398986816,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 63.163042068481445,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 66.45441055297852,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 554.3267726898193,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Stablecoins": [
+        {
+          "auth_method": "No Auth",
+          "status_code": 404,
+          "response_time_ms": 658.5407257080078,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "API Key Header",
+          "status_code": 404,
+          "response_time_ms": 34.23023223876953,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "X-API-KEY",
+          "status_code": 404,
+          "response_time_ms": 39.56747055053711,
+          "content_size": 115,
+          "success": false
+        },
+        {
+          "auth_method": "Query Param",
+          "status_code": 404,
+          "response_time_ms": 649.4259834289551,
+          "content_size": 115,
+          "success": false
+        }
+      ],
+      "Alt Yields": [],
+      "Alt Stables": []
+    }
+  },
+  "velo_data": {
+    "sdk_working": false,
+    "direct_api": {
+      "working": [],
+      "failed": [
+        "Base URL",
+        "Health Check",
+        "API Info",
+        "Data URL",
+        "Pro API"
+      ],
+      "details": {}
+    },
+    "recommendation": "Use official Velo SDK for proper integration"
+  }
+}

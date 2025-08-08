@@ -47,6 +47,8 @@ class APIConfig:
     # DeFiLlama Pro API  
     defillama_api_key: str = "435722de8920d195d301a595f0c29ed939608c9b1da2d75905e85a68f3ee336d"
     defillama_base_url: str = "https://api.llama.fi"
+    defillama_yields_url: str = "https://yields.llama.fi"
+    defillama_stables_url: str = "https://stablecoins.llama.fi"
     defillama_rate_limit: int = 300  # requests per minute
     
     # Velo Data API
@@ -224,10 +226,10 @@ class DeFiLlamaProAPI:
             APIEndpoint(
                 name="yields_pools",
                 method="GET",
-                url=f"{config.defillama_base_url}/pools",
+                url=f"{config.defillama_yields_url}/pools",
                 headers=self.base_headers,
                 params={},
-                description="Get yield farming pool data",
+                description="Get yield farming pool data - FIXED ENDPOINT",
                 expected_fields=["pool", "chain", "project", "apy", "tvlUsd"],
                 rate_limit_per_minute=config.defillama_rate_limit
             ),
@@ -235,12 +237,10 @@ class DeFiLlamaProAPI:
             APIEndpoint(
                 name="stablecoins",
                 method="GET",
-                url=f"{config.defillama_base_url}/stablecoins",
+                url=f"{config.defillama_stables_url}/stablecoins",
                 headers=self.base_headers,
-                params={
-                    "includePrices": True
-                },
-                description="Get stablecoin market data and circulating supply",
+                params={},
+                description="Get stablecoin market data - FIXED ENDPOINT",
                 expected_fields=["name", "symbol", "circulating", "price"],
                 rate_limit_per_minute=config.defillama_rate_limit
             )

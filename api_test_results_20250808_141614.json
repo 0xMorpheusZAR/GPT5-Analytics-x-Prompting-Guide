@@ -1,0 +1,414 @@
+{
+  "test_summary": {
+    "start_time": "2025-08-08T14:14:54.230203",
+    "total_endpoints": 15,
+    "successful_endpoints": 10,
+    "failed_endpoints": 5,
+    "end_time": "2025-08-08T14:16:14.001451"
+  },
+  "api_results": {
+    "coingecko": [
+      {
+        "endpoint_name": "market_data",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 516.4635181427002,
+        "data_size_bytes": 84519,
+        "expected_fields_found": [
+          "id",
+          "symbol",
+          "name",
+          "current_price",
+          "market_cap",
+          "total_volume"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:14:54.747182"
+      },
+      {
+        "endpoint_name": "price_history",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 342.6177501678467,
+        "data_size_bytes": 3258,
+        "expected_fields_found": [
+          "prices",
+          "market_caps",
+          "total_volumes"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:15:26.212700"
+      },
+      {
+        "endpoint_name": "global_data",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 358.8578701019287,
+        "data_size_bytes": 3617,
+        "expected_fields_found": [
+          "active_cryptocurrencies",
+          "total_market_cap",
+          "total_volume"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:15:27.572034"
+      },
+      {
+        "endpoint_name": "trending_coins",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 367.04134941101074,
+        "data_size_bytes": 54040,
+        "expected_fields_found": [
+          "coins",
+          "nfts"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:15:28.939811"
+      },
+      {
+        "endpoint_name": "coin_details",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 436.88058853149414,
+        "data_size_bytes": 96021,
+        "expected_fields_found": [
+          "id",
+          "symbol",
+          "name",
+          "id",
+          "id",
+          "market_data",
+          "name"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:15:30.378360"
+      }
+    ],
+    "defillama": [
+      {
+        "endpoint_name": "protocols_list",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 114.7317886352539,
+        "data_size_bytes": 6097757,
+        "expected_fields_found": [
+          "name",
+          "symbol",
+          "chain",
+          "category",
+          "tvl"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:15:31.575678"
+      },
+      {
+        "endpoint_name": "protocol_tvl",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 495.4197406768799,
+        "data_size_bytes": 7405496,
+        "expected_fields_found": [
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tvl",
+          "tokensInUsd",
+          "tokens",
+          "tokens",
+          "tokens",
+          "tokensInUsd",
+          "tokens",
+          "tvl"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:16:03.651944"
+      },
+      {
+        "endpoint_name": "chains_tvl",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 39.01314735412598,
+        "data_size_bytes": 45932,
+        "expected_fields_found": [
+          "tvl",
+          "tokenSymbol",
+          "name"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:16:04.696717"
+      },
+      {
+        "endpoint_name": "yields_pools",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 303.2691478729248,
+        "data_size_bytes": 12878750,
+        "expected_fields_found": [
+          "chain",
+          "project",
+          "tvlUsd",
+          "apy",
+          "pool"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:16:06.130763"
+      },
+      {
+        "endpoint_name": "stablecoins",
+        "success": true,
+        "status_code": 200,
+        "response_time_ms": 57.16276168823242,
+        "data_size_bytes": 377717,
+        "expected_fields_found": [
+          "name",
+          "symbol",
+          "circulating",
+          "price",
+          "name"
+        ],
+        "missing_fields": [],
+        "error_message": null,
+        "timestamp": "2025-08-08T14:16:07.233764"
+      }
+    ],
+    "velo": [
+      {
+        "endpoint_name": "market_overview",
+        "success": false,
+        "status_code": 403,
+        "response_time_ms": 38.089752197265625,
+        "data_size_bytes": 0,
+        "expected_fields_found": [],
+        "missing_fields": [
+          "market_cap",
+          "volume",
+          "dominance",
+          "sentiment"
+        ],
+        "error_message": "HTTP 403: api key not authorized",
+        "timestamp": "2025-08-08T14:16:08.272360"
+      },
+      {
+        "endpoint_name": "institutional_flows",
+        "success": false,
+        "status_code": 403,
+        "response_time_ms": 18.857717514038086,
+        "data_size_bytes": 0,
+        "expected_fields_found": [],
+        "missing_fields": [
+          "inflows",
+          "outflows",
+          "net_flow",
+          "volume"
+        ],
+        "error_message": "HTTP 403: api key not authorized",
+        "timestamp": "2025-08-08T14:16:09.291609"
+      },
+      {
+        "endpoint_name": "options_flow",
+        "success": false,
+        "status_code": 200,
+        "response_time_ms": 681.0235977172852,
+        "data_size_bytes": 88,
+        "expected_fields_found": [],
+        "missing_fields": [
+          "calls",
+          "puts",
+          "volume",
+          "open_interest"
+        ],
+        "error_message": "Invalid JSON response: Expecting value: line 1 column 1 (char 0)",
+        "timestamp": "2025-08-08T14:16:10.973333"
+      },
+      {
+        "endpoint_name": "sentiment_analysis",
+        "success": false,
+        "status_code": 403,
+        "response_time_ms": 12.270927429199219,
+        "data_size_bytes": 0,
+        "expected_fields_found": [],
+        "missing_fields": [
+          "sentiment_score",
+          "social_volume",
+          "mentions"
+        ],
+        "error_message": "HTTP 403: api key not authorized",
+        "timestamp": "2025-08-08T14:16:11.985824"
+      },
+      {
+        "endpoint_name": "whale_activity",
+        "success": false,
+        "status_code": 403,
+        "response_time_ms": 14.079570770263672,
+        "data_size_bytes": 0,
+        "expected_fields_found": [],
+        "missing_fields": [
+          "transactions",
+          "total_value",
+          "addresses"
+        ],
+        "error_message": "HTTP 403: api key not authorized",
+        "timestamp": "2025-08-08T14:16:13.000552"
+      }
+    ]
+  },
+  "performance_summary": {
+    "total_apis_tested": 3,
+    "api_performance": {
+      "coingecko": {
+        "avg_response_time_ms": 404.3722152709961,
+        "success_rate": 100.0,
+        "total_endpoints": 5,
+        "successful_endpoints": 5,
+        "performance_grade": "B"
+      },
+      "defillama": {
+        "avg_response_time_ms": 201.9193172454834,
+        "success_rate": 100.0,
+        "total_endpoints": 5,
+        "successful_endpoints": 5,
+        "performance_grade": "B"
+      }
+    },
+    "overall_stats": {
+      "avg_response_time_ms": 303.14576625823975,
+      "fastest_endpoint": {
+        "name": "defillama (fastest endpoint)",
+        "time_ms": 39.01314735412598
+      },
+      "slowest_endpoint": {
+        "name": "coingecko (slowest endpoint)",
+        "time_ms": 516.4635181427002
+      },
+      "highest_success_rate": {
+        "name": "",
+        "rate": 0
+      },
+      "lowest_success_rate": {
+        "name": "",
+        "rate": 100
+      }
+    }
+  }
+}
