@@ -1,0 +1,651 @@
+{
+  "altcoin_strength": {
+    "eth_7d_performance": 7.64,
+    "outperformers": [],
+    "analysis_time": "2025-08-08T12:47:53.595240"
+  },
+  "sector_opportunities": {
+    "analysis_horizon": "14 days",
+    "top_sectors": [
+      {
+        "sector": "Fiat-backed Stablecoin",
+        "sector_score": 43.5,
+        "momentum": "+0.0% (7d)",
+        "thesis": "Strong fundamentals and momentum in Fiat-backed Stablecoin ecosystem",
+        "top_picks": [
+          {
+            "symbol": "USDT",
+            "name": "Tether",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 89711364897,
+            "market_cap": 164349631770,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDC",
+            "name": "USDC",
+            "current_price": 0.999762,
+            "change_7d": 0,
+            "volume_24h": 14943715893,
+            "market_cap": 64713632665,
+            "entry_zone": 0.979767,
+            "invalidation": 0.849798,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDE",
+            "name": "Ethena USDe",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 381103668,
+            "market_cap": 9796975785,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDS",
+            "name": "USDS",
+            "current_price": 0.999433,
+            "change_7d": 0,
+            "volume_24h": 13114616,
+            "market_cap": 7926331378,
+            "entry_zone": 0.979444,
+            "invalidation": 0.849518,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "DAI",
+            "name": "Dai",
+            "current_price": 0.999896,
+            "change_7d": 0,
+            "volume_24h": 101507994,
+            "market_cap": 3772793953,
+            "entry_zone": 0.979898,
+            "invalidation": 0.849912,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDTB",
+            "name": "USDtb",
+            "current_price": 0.999671,
+            "change_7d": 0,
+            "volume_24h": 2776643,
+            "market_cap": 1457871968,
+            "entry_zone": 0.979678,
+            "invalidation": 0.84972,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "FDUSD",
+            "name": "First Digital USD",
+            "current_price": 0.997867,
+            "change_7d": 0,
+            "volume_24h": 7886166137,
+            "market_cap": 1289295960,
+            "entry_zone": 0.97791,
+            "invalidation": 0.848187,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "PYUSD",
+            "name": "PayPal USD",
+            "current_price": 0.999716,
+            "change_7d": 0,
+            "volume_24h": 34711022,
+            "market_cap": 1026344318,
+            "entry_zone": 0.979722,
+            "invalidation": 0.849759,
+            "strength_rank": 1
+          }
+        ]
+      },
+      {
+        "sector": "Stablecoins",
+        "sector_score": 42.23,
+        "momentum": "+0.0% (7d)",
+        "thesis": "Strong fundamentals and momentum in Stablecoins ecosystem",
+        "top_picks": [
+          {
+            "symbol": "USDT",
+            "name": "Tether",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 89711364897,
+            "market_cap": 164349631770,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDC",
+            "name": "USDC",
+            "current_price": 0.999762,
+            "change_7d": 0,
+            "volume_24h": 14943715893,
+            "market_cap": 64713632665,
+            "entry_zone": 0.979767,
+            "invalidation": 0.849798,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDE",
+            "name": "Ethena USDe",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 381103668,
+            "market_cap": 9796975785,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDS",
+            "name": "USDS",
+            "current_price": 0.999433,
+            "change_7d": 0,
+            "volume_24h": 13114616,
+            "market_cap": 7926331378,
+            "entry_zone": 0.979444,
+            "invalidation": 0.849518,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "BSC-USD",
+            "name": "Binance Bridged USDT (BNB Smart Chain)",
+            "current_price": 0.999636,
+            "change_7d": 0,
+            "volume_24h": 2396199849,
+            "market_cap": 6783183991,
+            "entry_zone": 0.979643,
+            "invalidation": 0.849691,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "DAI",
+            "name": "Dai",
+            "current_price": 0.999896,
+            "change_7d": 0,
+            "volume_24h": 101507994,
+            "market_cap": 3772793953,
+            "entry_zone": 0.979898,
+            "invalidation": 0.849912,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USD1",
+            "name": "USD1",
+            "current_price": 0.999654,
+            "change_7d": 0,
+            "volume_24h": 397720979,
+            "market_cap": 2198060032,
+            "entry_zone": 0.979661,
+            "invalidation": 0.849706,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDTB",
+            "name": "USDtb",
+            "current_price": 0.999671,
+            "change_7d": 0,
+            "volume_24h": 2776643,
+            "market_cap": 1457871968,
+            "entry_zone": 0.979678,
+            "invalidation": 0.84972,
+            "strength_rank": 1
+          }
+        ]
+      },
+      {
+        "sector": "USD Stablecoin",
+        "sector_score": 41.3,
+        "momentum": "+0.0% (7d)",
+        "thesis": "Strong fundamentals and momentum in USD Stablecoin ecosystem",
+        "top_picks": [
+          {
+            "symbol": "USDT",
+            "name": "Tether",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 89711364897,
+            "market_cap": 164349631770,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDC",
+            "name": "USDC",
+            "current_price": 0.999762,
+            "change_7d": 0,
+            "volume_24h": 14943715893,
+            "market_cap": 64713632665,
+            "entry_zone": 0.979767,
+            "invalidation": 0.849798,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDE",
+            "name": "Ethena USDe",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 381103668,
+            "market_cap": 9796975785,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDS",
+            "name": "USDS",
+            "current_price": 0.999433,
+            "change_7d": 0,
+            "volume_24h": 13114616,
+            "market_cap": 7926331378,
+            "entry_zone": 0.979444,
+            "invalidation": 0.849518,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "BSC-USD",
+            "name": "Binance Bridged USDT (BNB Smart Chain)",
+            "current_price": 0.999636,
+            "change_7d": 0,
+            "volume_24h": 2396199849,
+            "market_cap": 6783183991,
+            "entry_zone": 0.979643,
+            "invalidation": 0.849691,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "DAI",
+            "name": "Dai",
+            "current_price": 0.999896,
+            "change_7d": 0,
+            "volume_24h": 101507994,
+            "market_cap": 3772793953,
+            "entry_zone": 0.979898,
+            "invalidation": 0.849912,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USD1",
+            "name": "USD1",
+            "current_price": 0.999654,
+            "change_7d": 0,
+            "volume_24h": 397720979,
+            "market_cap": 2198060032,
+            "entry_zone": 0.979661,
+            "invalidation": 0.849706,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDTB",
+            "name": "USDtb",
+            "current_price": 0.999671,
+            "change_7d": 0,
+            "volume_24h": 2776643,
+            "market_cap": 1457871968,
+            "entry_zone": 0.979678,
+            "invalidation": 0.84972,
+            "strength_rank": 1
+          }
+        ]
+      },
+      {
+        "sector": "World Liberty Financial Portfolio",
+        "sector_score": 18.57,
+        "momentum": "+0.0% (7d)",
+        "thesis": "Strong fundamentals and momentum in World Liberty Financial Portfolio ecosystem",
+        "top_picks": [
+          {
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "current_price": 3895.02,
+            "change_7d": 0,
+            "volume_24h": 35275361318,
+            "market_cap": 470190899586,
+            "entry_zone": 3817.1196,
+            "invalidation": 3310.767,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDT",
+            "name": "Tether",
+            "current_price": 1.0,
+            "change_7d": 0,
+            "volume_24h": 89711364897,
+            "market_cap": 164349631770,
+            "entry_zone": 0.98,
+            "invalidation": 0.85,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "USDC",
+            "name": "USDC",
+            "current_price": 0.999762,
+            "change_7d": 0,
+            "volume_24h": 14943715893,
+            "market_cap": 64713632665,
+            "entry_zone": 0.979767,
+            "invalidation": 0.849798,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "TRX",
+            "name": "TRON",
+            "current_price": 0.337621,
+            "change_7d": 0,
+            "volume_24h": 1218427552,
+            "market_cap": 31974180041,
+            "entry_zone": 0.330869,
+            "invalidation": 0.286978,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "WBTC",
+            "name": "Wrapped Bitcoin",
+            "current_price": 116439,
+            "change_7d": 0,
+            "volume_24h": 136425249,
+            "market_cap": 14777382268,
+            "entry_zone": 114110.22,
+            "invalidation": 98973.15,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "LINK",
+            "name": "Chainlink",
+            "current_price": 19.32,
+            "change_7d": 0,
+            "volume_24h": 1487807807,
+            "market_cap": 13111364504,
+            "entry_zone": 18.9336,
+            "invalidation": 16.422,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "AVAX",
+            "name": "Avalanche",
+            "current_price": 23.5,
+            "change_7d": 0,
+            "volume_24h": 749689074,
+            "market_cap": 9934161036,
+            "entry_zone": 23.03,
+            "invalidation": 19.975,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "AAVE",
+            "name": "Aave",
+            "current_price": 281.63,
+            "change_7d": 0,
+            "volume_24h": 554501104,
+            "market_cap": 4285117143,
+            "entry_zone": 275.9974,
+            "invalidation": 239.3855,
+            "strength_rank": 1
+          }
+        ]
+      },
+      {
+        "sector": "Decentralized Finance (DeFi)",
+        "sector_score": 14.1,
+        "momentum": "+0.0% (7d)",
+        "thesis": "Yield farming renaissance and institutional DeFi adoption",
+        "top_picks": [
+          {
+            "symbol": "STETH",
+            "name": "Lido Staked Ether",
+            "current_price": 3889.51,
+            "change_7d": 0,
+            "volume_24h": 130084559,
+            "market_cap": 34570127026,
+            "entry_zone": 3811.7198,
+            "invalidation": 3306.0835,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "WSTETH",
+            "name": "Wrapped stETH",
+            "current_price": 4706.21,
+            "change_7d": 0,
+            "volume_24h": 98549560,
+            "market_cap": 15259866224,
+            "entry_zone": 4612.0858,
+            "invalidation": 4000.2785,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "HYPE",
+            "name": "Hyperliquid",
+            "current_price": 40.93,
+            "change_7d": 0,
+            "volume_24h": 234878507,
+            "market_cap": 13662876762,
+            "entry_zone": 40.1114,
+            "invalidation": 34.7905,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "LINK",
+            "name": "Chainlink",
+            "current_price": 19.32,
+            "change_7d": 0,
+            "volume_24h": 1487807807,
+            "market_cap": 13111364504,
+            "entry_zone": 18.9336,
+            "invalidation": 16.422,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "UNI",
+            "name": "Uniswap",
+            "current_price": 10.61,
+            "change_7d": 0,
+            "volume_24h": 605730242,
+            "market_cap": 6374720677,
+            "entry_zone": 10.3978,
+            "invalidation": 9.0185,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "AAVE",
+            "name": "Aave",
+            "current_price": 281.63,
+            "change_7d": 0,
+            "volume_24h": 554501104,
+            "market_cap": 4285117143,
+            "entry_zone": 275.9974,
+            "invalidation": 239.3855,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "ENA",
+            "name": "Ethena",
+            "current_price": 0.615644,
+            "change_7d": 0,
+            "volume_24h": 688816018,
+            "market_cap": 4084412428,
+            "entry_zone": 0.603331,
+            "invalidation": 0.523297,
+            "strength_rank": 1
+          },
+          {
+            "symbol": "DAI",
+            "name": "Dai",
+            "current_price": 0.999896,
+            "change_7d": 0,
+            "volume_24h": 101507994,
+            "market_cap": 3772793953,
+            "entry_zone": 0.979898,
+            "invalidation": 0.849912,
+            "strength_rank": 1
+          }
+        ]
+      }
+    ],
+    "analysis_time": "2025-08-08T12:47:56.000377",
+    "methodology": "Composite scoring: momentum + turnover + TVL dynamics"
+  },
+  "dip_opportunities": {
+    "analysis_timeframe": "14 days",
+    "dip_opportunities": [
+      {
+        "asset": "Bitcoin",
+        "symbol": "BTC",
+        "current_price": 116492,
+        "change_7d": 1.45166,
+        "reset_score": 75.0,
+        "oi_reset_magnitude": "25.1%",
+        "funding_percentile": "26th percentile",
+        "entry_plan": [
+          {
+            "level": 1,
+            "entry_price": 111832.32,
+            "size_percentage": 60,
+            "distance_from_current": "4.0% below"
+          },
+          {
+            "level": 2,
+            "entry_price": 103677.88,
+            "size_percentage": 40,
+            "distance_from_current": "11.0% below"
+          }
+        ],
+        "tvl_stability": 0.81,
+        "invalidation_level": 93193.6,
+        "thesis": "Early reset signals in Bitcoin requiring confirmation"
+      },
+      {
+        "asset": "Ethereum",
+        "symbol": "ETH",
+        "current_price": 3895.11,
+        "change_7d": 7.63954,
+        "reset_score": 75.0,
+        "oi_reset_magnitude": "42.6%",
+        "funding_percentile": "31th percentile",
+        "entry_plan": [
+          {
+            "level": 1,
+            "entry_price": 3739.3056,
+            "size_percentage": 60,
+            "distance_from_current": "4.0% below"
+          },
+          {
+            "level": 2,
+            "entry_price": 3466.6479,
+            "size_percentage": 40,
+            "distance_from_current": "11.0% below"
+          }
+        ],
+        "tvl_stability": 0.84,
+        "invalidation_level": 3116.088,
+        "thesis": "Early reset signals in Ethereum requiring confirmation"
+      },
+      {
+        "asset": "Solana",
+        "symbol": "SOL",
+        "current_price": 176.54,
+        "change_7d": 4.92643,
+        "reset_score": 75.0,
+        "oi_reset_magnitude": "40.3%",
+        "funding_percentile": "23th percentile",
+        "entry_plan": [
+          {
+            "level": 1,
+            "entry_price": 169.4784,
+            "size_percentage": 60,
+            "distance_from_current": "4.0% below"
+          },
+          {
+            "level": 2,
+            "entry_price": 157.1206,
+            "size_percentage": 40,
+            "distance_from_current": "11.0% below"
+          }
+        ],
+        "tvl_stability": 1.03,
+        "invalidation_level": 141.232,
+        "thesis": "Early reset signals in Solana requiring confirmation"
+      },
+      {
+        "asset": "Polygon",
+        "symbol": "MATIC",
+        "current_price": 0.238507,
+        "change_7d": 19.19462,
+        "reset_score": 75.0,
+        "oi_reset_magnitude": "29.6%",
+        "funding_percentile": "36th percentile",
+        "entry_plan": [
+          {
+            "level": 1,
+            "entry_price": 0.228967,
+            "size_percentage": 60,
+            "distance_from_current": "4.0% below"
+          },
+          {
+            "level": 2,
+            "entry_price": 0.212271,
+            "size_percentage": 40,
+            "distance_from_current": "11.0% below"
+          }
+        ],
+        "tvl_stability": 0.93,
+        "invalidation_level": 0.19080560000000002,
+        "thesis": "Early reset signals in Polygon requiring confirmation"
+      },
+      {
+        "asset": "Chainlink",
+        "symbol": "LINK",
+        "current_price": 19.32,
+        "change_7d": 17.13738,
+        "reset_score": 75.0,
+        "oi_reset_magnitude": "38.0%",
+        "funding_percentile": "10th percentile",
+        "entry_plan": [
+          {
+            "level": 1,
+            "entry_price": 18.5472,
+            "size_percentage": 60,
+            "distance_from_current": "4.0% below"
+          },
+          {
+            "level": 2,
+            "entry_price": 17.1948,
+            "size_percentage": 40,
+            "distance_from_current": "11.0% below"
+          }
+        ],
+        "tvl_stability": 1.06,
+        "invalidation_level": 15.456000000000001,
+        "thesis": "Early reset signals in Chainlink requiring confirmation"
+      }
+    ],
+    "market_context": "Market showing signs of leverage deleveraging with selective institutional bidding",
+    "analysis_time": "2025-08-08T12:47:59.553500"
+  },
+  "yield_opportunities": {
+    "error": "Failed to fetch yields data"
+  },
+  "executive_summary": {
+    "market_regime": "RESET_PHASE - Quality dip-buying opportunities",
+    "opportunity_count": {
+      "eth_outperformers": 0,
+      "sector_rotations": 5,
+      "dip_buying_setups": 5,
+      "yield_opportunities": 0
+    },
+    "key_themes": [
+      "Altcoin strength rotation continuing",
+      "Selective sector leadership emerging",
+      "Leverage reset creating dip-buying entries",
+      "DeFi yields normalizing with quality opportunities"
+    ],
+    "risk_assessment": "Moderate - Mixed signals requiring selective positioning"
+  },
+  "analysis_timestamp": "2025-08-08T12:48:02.833694"
+}

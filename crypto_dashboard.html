@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperClaude Crypto Analysis Suite</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f0f23);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #4fc3f7;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .dashboard-header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #b3e5fc;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .role-card {
+            background: linear-gradient(145deg, #2d2d44, #1a1a2e);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(79, 195, 247, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(79, 195, 247, 0.2);
+            border-color: #4fc3f7;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4fc3f7, #29b6f6, #03a9f4);
+        }
+
+        .role-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-icon {
+            font-size: 2rem;
+            color: #4fc3f7;
+            margin-right: 1rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .role-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .role-subtitle {
+            font-size: 0.9rem;
+            color: #b3e5fc;
+            margin-top: 0.3rem;
+        }
+
+        .role-description {
+            color: #e1f5fe;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-sources {
+            margin-bottom: 1.5rem;
+        }
+
+        .data-sources h4 {
+            color: #4fc3f7;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-source {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #b3e5fc;
+        }
+
+        .data-source i {
+            color: #4fc3f7;
+            width: 16px;
+            margin-right: 0.5rem;
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 12px 0;
+            background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .analyze-btn:hover {
+            background: linear-gradient(45deg, #29b6f6, #0288d1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
+        }
+
+        .results-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(145deg, #1a1a2e, #2d2d44);
+            border-radius: 15px;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+            min-height: 400px;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(79, 195, 247, 0.3);
+        }
+
+        .results-header i {
+            font-size: 1.5rem;
+            color: #4fc3f7;
+            margin-right: 1rem;
+        }
+
+        .results-header h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #b3e5fc;
+        }
+
+        .loading i {
+            font-size: 3rem;
+            color: #4fc3f7;
+            animation: spin 2s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .result-card {
+            background: rgba(45, 45, 68, 0.5);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4fc3f7;
+        }
+
+        .result-title {
+            color: #4fc3f7;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .metric {
+            background: rgba(79, 195, 247, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4fc3f7;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #b3e5fc;
+            margin-top: 0.3rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-active { background-color: #4caf50; }
+        .status-warning { background-color: #ff9800; }
+        .status-error { background-color: #f44336; }
+
+        .api-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(45, 45, 68, 0.95);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+            z-index: 1000;
+        }
+
+        .api-status h4 {
+            color: #4fc3f7;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .api-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #b3e5fc;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #b3e5fc;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .roles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .role-card {
+                padding: 1.5rem;
+            }
+            
+            .api-status {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- API Status Indicator -->
+    <div class="api-status">
+        <h4><i class="fas fa-satellite-dish"></i> API Status</h4>
+        <div class="api-item">
+            <span class="status-indicator status-active"></span>
+            CoinGecko Pro
+        </div>
+        <div class="api-item">
+            <span class="status-indicator status-active"></span>
+            DefiLlama
+        </div>
+        <div class="api-item">
+            <span class="status-indicator status-warning"></span>
+            Velo Data
+        </div>
+    </div>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1><i class="fas fa-chart-line"></i> SuperClaude Crypto Analysis Suite</h1>
+        <p class="subtitle">Professional-grade crypto analysis with multi-API integration • Real-time risk management & opportunity discovery</p>
+    </div>
+
+    <div class="main-container">
+        <!-- Roles Grid -->
+        <div class="roles-grid">
+            <!-- Risk Manager & Macro PM -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">Risk Manager & Macro PM</div>
+                        <div class="role-subtitle">Daily risk regime scoring + allocation</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Build a daily "risk regime score" (0–100) and tactical allocation plan (BTC/ETH/Alts/Cash %) with 1-3 day trading recommendations based on comprehensive market analysis.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: Global metrics, dominance, volume, breadth
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        DefiLlama: TVL momentum, stablecoins, yields
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Velo: Futures/spot flow, funding, OI analysis
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runRiskAnalysis()">
+                    <i class="fas fa-play"></i> Generate Risk Report
+                </button>
+            </div>
+
+            <!-- Quant Sector Scout -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">Quant Sector Scout</div>
+                        <div class="role-subtitle">Sector rotation opportunities</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Identify 3-5 sectors primed for outperformance in the next 7-21 days with top 5-15 tickers per sector, including entry zones and invalidation levels.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: Categories ROI, volume, trending pools
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        DefiLlama: TVL velocity by sector/protocol
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Velo: OI, funding, taker flow validation
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runSectorScout()">
+                    <i class="fas fa-play"></i> Scout Sectors
+                </button>
+            </div>
+
+            <!-- Tactical Dip-Buyer -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">Tactical Dip-Buyer</div>
+                        <div class="role-subtitle">Leverage reset detection</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Detect pairs where leverage has meaningfully reset while spot demand stabilizes. Generate laddered bids and time-based scaling plans.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: OHLC, volume charts, derivatives data
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        DefiLlama: TVL drawdown vs price analysis
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Velo: OI reset, funding flip, taker imbalance
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runDipBuyer()">
+                    <i class="fas fa-play"></i> Find Dip Setups
+                </button>
+            </div>
+
+            <!-- Yield PM -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">Yield PM</div>
+                        <div class="role-subtitle">DeFi opportunity ranking</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Rank top DeFi opportunities where net APY is attractive after protocol liquidity, token concentration, and market beta risk adjustments.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        DefiLlama: Yields universe, TVL trends, APY variance
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: Token liquidity, category beta, drawdowns
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Velo: Flow analysis for exit risk assessment
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runYieldAnalysis()">
+                    <i class="fas fa-play"></i> Rank Yields
+                </button>
+            </div>
+
+            <!-- Five-Minute Altcoin Check -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">5-Min Altcoin Strength</div>
+                        <div class="role-subtitle">ETH outperformers</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Quick check: List 5 altcoins that beat ETH's weekly return today. Each coin gets a one-sentence catalyst and price chart link.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: Weekly returns, market performance
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Real-time price comparison vs ETH
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runAltcoinCheck()">
+                    <i class="fas fa-play"></i> Quick Strength Check
+                </button>
+            </div>
+
+            <!-- Gem Deep Dive -->
+            <div class="role-card">
+                <div class="role-header">
+                    <div class="role-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div>
+                        <div class="role-title">Gem Deep Dive</div>
+                        <div class="role-subtitle">Micro-cap analysis</div>
+                    </div>
+                </div>
+                <div class="role-description">
+                    Select one micro-cap below $30M with rising on-chain volume. Comprehensive fundamental report: team, product, tokenomics, runway, and red flags.
+                </div>
+                <div class="data-sources">
+                    <h4><i class="fas fa-database"></i> Data Sources</h4>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        CoinGecko: Market cap, volume, on-chain metrics
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        DefiLlama: Protocol analysis, TVL trends
+                    </div>
+                    <div class="data-source">
+                        <i class="fas fa-circle"></i>
+                        Team research, tokenomics analysis
+                    </div>
+                </div>
+                <button class="analyze-btn" onclick="runGemAnalysis()">
+                    <i class="fas fa-play"></i> Deep Dive Analysis
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="results-section">
+            <div class="results-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Analysis Results</h2>
+            </div>
+            <div id="results-content">
+                <div class="loading">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Select an analysis module above to view comprehensive results</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">
+                        SuperClaude Framework • Multi-API Integration • Real-time Analysis
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            <strong>SuperClaude Crypto Analysis Suite</strong> • 
+            Powered by <a href="https://github.com/SuperClaude-Org/SuperClaude_Framework" target="_blank">SuperClaude Framework v3.0.0</a>
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+            Multi-API Integration: CoinGecko Pro • DefiLlama • Velo Data • 
+            Professional-grade crypto risk management and opportunity discovery
+        </p>
+    </div>
+
+    <script>
+        // Mock data for demonstration
+        const mockData = {
+            riskAnalysis: {
+                composite_risk_score: 67.3,
+                components: {
+                    market_breadth: 72.1,
+                    defi_momentum: 58.9,
+                    orderflow_balance: 69.8
+                },
+                allocation: {
+                    BTC: 42.5,
+                    ETH: 27.0,
+                    Top_Alts: 18.5,
+                    Cash: 12.0
+                },
+                regime: "NEUTRAL",
+                key_recommendation: "MAINTAIN current positions, watch for breakouts"
+            },
+            sectorScout: [
+                {
+                    sector: "AI & Big Data",
+                    momentum: "+24.7% (7d)",
+                    score: 89.2,
+                    top_picks: [
+                        { symbol: "FET", name: "Fetch.ai", change_7d: 31.2, entry: 0.82, invalidation: 0.65 },
+                        { symbol: "OCEAN", name: "Ocean Protocol", change_7d: 28.5, entry: 0.45, invalidation: 0.35 },
+                        { symbol: "AGIX", name: "SingularityNET", change_7d: 25.1, entry: 0.38, invalidation: 0.29 }
+                    ]
+                },
+                {
+                    sector: "Layer 1",
+                    momentum: "+18.3% (7d)",
+                    score: 78.6,
+                    top_picks: [
+                        { symbol: "SOL", name: "Solana", change_7d: 22.1, entry: 145.50, invalidation: 125.00 },
+                        { symbol: "AVAX", name: "Avalanche", change_7d: 19.8, entry: 28.50, invalidation: 24.00 },
+                        { symbol: "NEAR", name: "Near Protocol", change_7d: 16.3, entry: 4.85, invalidation: 4.10 }
+                    ]
+                }
+            ],
+            dipBuyer: [
+                {
+                    symbol: "MATIC",
+                    asset: "Polygon",
+                    reset_score: 87.3,
+                    current_price: 0.9245,
+                    change_7d: -12.4,
+                    entry_plan: [
+                        { level: 1, entry_price: 0.8850, size: 35, distance: "4.3% below" },
+                        { level: 2, entry_price: 0.8320, size: 40, distance: "10.0% below" },
+                        { level: 3, entry_price: 0.7650, size: 25, distance: "17.3% below" }
+                    ]
+                }
+            ],
+            yieldAnalysis: [
+                {
+                    project: "Aave V3",
+                    chain: "Polygon",
+                    symbol: "USDC",
+                    base_apy: 8.45,
+                    sustainable_yield_score: 12.7,
+                    sizing_guidance: "Large allocation (5-10% of DeFi portfolio)"
+                },
+                {
+                    project: "Compound V3",
+                    chain: "Ethereum", 
+                    symbol: "USDC",
+                    base_apy: 6.23,
+                    sustainable_yield_score: 11.2,
+                    sizing_guidance: "Moderate allocation (2-5% of DeFi portfolio)"
+                }
+            ],
+            altcoinCheck: [
+                {
+                    symbol: "SOL",
+                    name: "Solana",
+                    weekly_return: "+22.1%",
+                    vs_eth_outperformance: "+15.3%",
+                    catalyst: "Strong ecosystem growth and institutional adoption momentum",
+                    price_chart: "https://www.coingecko.com/en/coins/solana"
+                },
+                {
+                    symbol: "AVAX", 
+                    name: "Avalanche",
+                    weekly_return: "+19.8%",
+                    vs_eth_outperformance: "+12.7%",
+                    catalyst: "Subnet growth and institutional blockchain adoption",
+                    price_chart: "https://www.coingecko.com/en/coins/avalanche"
+                }
+            ],
+            gemAnalysis: {
+                name: "DeepBrain Chain",
+                symbol: "DBC",
+                market_cap: "$28.4M",
+                weekly_volume_change: "+145.7%",
+                team: "Experienced AI researchers from Tsinghua University and Microsoft",
+                product: "Decentralized neural network training and AI compute marketplace",
+                tokenomics: "Supply: 10B DBC, Inflation: 5% annually, Staking rewards: 12% APY",
+                runway: "18-24 months based on current treasury and burn rate",
+                red_flags: [
+                    "Heavy token concentration in team wallets (35%)",
+                    "Limited enterprise adoption despite 2+ year development",
+                    "High correlation with broader AI token movements"
+                ]
+            }
+        };
+
+        function showLoading() {
+            document.getElementById('results-content').innerHTML = `
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Analyzing market data...</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">
+                        Fetching from CoinGecko Pro, DefiLlama, and Velo Data APIs
+                    </p>
+                </div>
+            `;
+        }
+
+        function runRiskAnalysis() {
+            showLoading();
+            setTimeout(() => {
+                const data = mockData.riskAnalysis;
+                document.getElementById('results-content').innerHTML = `
+                    <div class="result-card">
+                        <div class="result-title">
+                            <i class="fas fa-shield-alt"></i> Daily Risk Regime Analysis
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">${data.composite_risk_score}</div>
+                                <div class="metric-label">Composite Risk Score</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.regime}</div>
+                                <div class="metric-label">Market Regime</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.components.market_breadth}</div>
+                                <div class="metric-label">Market Breadth</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.components.defi_momentum}</div>
+                                <div class="metric-label">DeFi Momentum</div>
+                            </div>
+                        </div>
+                        <h4 style="color: #4fc3f7; margin: 1.5rem 0 1rem 0;">Tactical Allocation</h4>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">${data.allocation.BTC}%</div>
+                                <div class="metric-label">Bitcoin (BTC)</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.allocation.ETH}%</div>
+                                <div class="metric-label">Ethereum (ETH)</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.allocation.Top_Alts}%</div>
+                                <div class="metric-label">Top Altcoins</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.allocation.Cash}%</div>
+                                <div class="metric-label">Cash/Stables</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(79, 195, 247, 0.1); border-radius: 8px;">
+                            <strong style="color: #4fc3f7;">Key Recommendation:</strong>
+                            <p style="margin-top: 0.5rem; color: #e1f5fe;">${data.key_recommendation}</p>
+                        </div>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        function runSectorScout() {
+            showLoading();
+            setTimeout(() => {
+                const sectors = mockData.sectorScout;
+                let html = '<div class="result-card"><div class="result-title"><i class="fas fa-search"></i> Top Sector Opportunities</div>';
+                
+                sectors.forEach(sector => {
+                    html += `
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #4fc3f7; margin-bottom: 1rem;">
+                                ${sector.sector} • ${sector.momentum} • Score: ${sector.score}
+                            </h4>
+                            <div class="metric-grid">
+                    `;
+                    
+                    sector.top_picks.forEach(pick => {
+                        html += `
+                            <div class="metric">
+                                <div class="metric-value">${pick.symbol}</div>
+                                <div class="metric-label">${pick.name}</div>
+                                <div style="font-size: 0.8rem; margin-top: 0.3rem; color: #4fc3f7;">
+                                    ${pick.change_7d > 0 ? '+' : ''}${pick.change_7d.toFixed(1)}%
+                                </div>
+                                <div style="font-size: 0.7rem; color: #b3e5fc;">
+                                    Entry: $${pick.entry}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div></div>';
+                });
+                
+                html += '</div>';
+                document.getElementById('results-content').innerHTML = html;
+            }, 1500);
+        }
+
+        function runDipBuyer() {
+            showLoading();
+            setTimeout(() => {
+                const data = mockData.dipBuyer[0];
+                document.getElementById('results-content').innerHTML = `
+                    <div class="result-card">
+                        <div class="result-title">
+                            <i class="fas fa-arrow-down"></i> Tactical Dip-Buying Opportunity
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">${data.symbol}</div>
+                                <div class="metric-label">${data.asset}</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.reset_score}</div>
+                                <div class="metric-label">Reset Score</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">$${data.current_price}</div>
+                                <div class="metric-label">Current Price</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.change_7d}%</div>
+                                <div class="metric-label">7D Change</div>
+                            </div>
+                        </div>
+                        <h4 style="color: #4fc3f7; margin: 1.5rem 0 1rem 0;">Laddered Entry Plan</h4>
+                        <div class="metric-grid">
+                            ${data.entry_plan.map(level => `
+                                <div class="metric">
+                                    <div class="metric-value">Level ${level.level}</div>
+                                    <div class="metric-label">$${level.entry_price} • ${level.size}%</div>
+                                    <div style="font-size: 0.7rem; color: #b3e5fc; margin-top: 0.3rem;">
+                                        ${level.distance}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        function runYieldAnalysis() {
+            showLoading();
+            setTimeout(() => {
+                const data = mockData.yieldAnalysis;
+                let html = '<div class="result-card"><div class="result-title"><i class="fas fa-percentage"></i> Top Yield Opportunities</div>';
+                
+                data.forEach(opportunity => {
+                    html += `
+                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(79, 195, 247, 0.05); border-radius: 8px;">
+                            <h4 style="color: #4fc3f7; margin-bottom: 0.5rem;">
+                                ${opportunity.project} on ${opportunity.chain}
+                            </h4>
+                            <div class="metric-grid">
+                                <div class="metric">
+                                    <div class="metric-value">${opportunity.base_apy}%</div>
+                                    <div class="metric-label">Base APY</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">${opportunity.sustainable_yield_score}</div>
+                                    <div class="metric-label">Risk-Adj Score</div>
+                                </div>
+                            </div>
+                            <p style="color: #b3e5fc; font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Sizing:</strong> ${opportunity.sizing_guidance}
+                            </p>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+                document.getElementById('results-content').innerHTML = html;
+            }, 1500);
+        }
+
+        function runAltcoinCheck() {
+            showLoading();
+            setTimeout(() => {
+                const data = mockData.altcoinCheck;
+                let html = '<div class="result-card"><div class="result-title"><i class="fas fa-rocket"></i> ETH Outperformers This Week</div>';
+                
+                data.forEach(coin => {
+                    html += `
+                        <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(79, 195, 247, 0.05); border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h4 style="color: #4fc3f7;">${coin.symbol} - ${coin.name}</h4>
+                                <div style="text-align: right;">
+                                    <div style="color: #4caf50; font-weight: 600;">${coin.weekly_return}</div>
+                                    <div style="color: #b3e5fc; font-size: 0.8rem;">${coin.vs_eth_outperformance} vs ETH</div>
+                                </div>
+                            </div>
+                            <p style="color: #e1f5fe; line-height: 1.5; margin-bottom: 0.5rem;">
+                                ${coin.catalyst}
+                            </p>
+                            <a href="${coin.price_chart}" target="_blank" style="color: #4fc3f7; text-decoration: none; font-size: 0.9rem;">
+                                <i class="fas fa-external-link-alt"></i> View Price Chart
+                            </a>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+                document.getElementById('results-content').innerHTML = html;
+            }, 1500);
+        }
+
+        function runGemAnalysis() {
+            showLoading();
+            setTimeout(() => {
+                const data = mockData.gemAnalysis;
+                document.getElementById('results-content').innerHTML = `
+                    <div class="result-card">
+                        <div class="result-title">
+                            <i class="fas fa-gem"></i> Micro-Cap Deep Dive: ${data.name} (${data.symbol})
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <div class="metric-value">${data.market_cap}</div>
+                                <div class="metric-label">Market Cap</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.weekly_volume_change}</div>
+                                <div class="metric-label">Volume Growth</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">${data.runway}</div>
+                                <div class="metric-label">Estimated Runway</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4 style="color: #4fc3f7; margin-bottom: 1rem;">Fundamental Analysis</h4>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #4fc3f7;">Team:</strong>
+                                <p style="color: #e1f5fe; margin-top: 0.3rem;">${data.team}</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #4fc3f7;">Product:</strong>
+                                <p style="color: #e1f5fe; margin-top: 0.3rem;">${data.product}</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: #4fc3f7;">Tokenomics:</strong>
+                                <p style="color: #e1f5fe; margin-top: 0.3rem;">${data.tokenomics}</p>
+                            </div>
+                            
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(244, 67, 54, 0.1); border-radius: 8px; border-left: 4px solid #f44336;">
+                                <h4 style="color: #f44336; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle"></i> Red Flags</h4>
+                                ${data.red_flags.map(flag => `
+                                    <div style="color: #ffcdd2; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                        <i class="fas fa-warning" style="margin-right: 0.5rem;"></i>${flag}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        // Auto-refresh API status (mock)
+        setInterval(() => {
+            // In production, this would check actual API health
+            const indicators = document.querySelectorAll('.status-indicator');
+            indicators.forEach(indicator => {
+                if (Math.random() > 0.1) {
+                    indicator.className = 'status-indicator status-active';
+                }
+            });
+        }, 30000);
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('SuperClaude Crypto Analysis Suite loaded successfully');
+        });
+    </script>
+</body>
+</html>
