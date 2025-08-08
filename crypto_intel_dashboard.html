@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-5 Crypto Intelligence Suite | Professional Analytics Platform</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for Visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            /* Color System - Professional Dark Theme */
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-dark: #3730a3;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* Background Colors */
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-surface: rgba(255, 255, 255, 0.05);
+            --bg-hover: rgba(255, 255, 255, 0.1);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px rgba(31, 41, 55, 0.37);
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Typography */
+            --font-xs: 0.75rem;
+            --font-sm: 0.875rem;
+            --font-base: 1rem;
+            --font-lg: 1.125rem;
+            --font-xl: 1.25rem;
+            --font-2xl: 1.5rem;
+            --font-3xl: 1.875rem;
+            --font-4xl: 2.25rem;
+            --font-5xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            
+            /* Animated background */
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            background-size: 100% 100%;
+            animation: backgroundShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 35, 0.9);
+            border-bottom: 1px solid var(--glass-border);
+            padding: var(--space-lg) 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-xl);
+            color: white;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: var(--font-2xl);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text p {
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-sm) var(--space-md);
+            backdrop-filter: blur(10px);
+            font-size: var(--font-sm);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* Main Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: var(--space-sm);
+            margin: var(--space-xl) 0;
+            overflow-x: auto;
+            padding-bottom: var(--space-sm);
+        }
+
+        .nav-tab {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-hover);
+            border-color: var(--primary);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            border-color: var(--primary-light);
+            color: white;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Analysis Modules */
+        .analysis-module {
+            display: none;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .analysis-module.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .module-header {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .module-title {
+            font-size: var(--font-3xl);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .module-description {
+            font-size: var(--font-lg);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .analyze-button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-2xl);
+            color: white;
+            font-size: var(--font-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analyze-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .analyze-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .analyze-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .analyze-button:hover::before {
+            left: 100%;
+        }
+
+        /* Results Section */
+        .results-section {
+            margin-top: var(--space-2xl);
+        }
+
+        .results-container {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .results-title {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .results-meta {
+            color: var(--text-secondary);
+            font-size: var(--font-sm);
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .data-table th {
+            background: var(--bg-tertiary);
+            font-weight: 600;
+            color: var(--text-primary);
+            position: sticky;
+            top: 0;
+        }
+
+        .data-table td {
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-hover);
+        }
+
+        /* Charts */
+        .chart-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        /* Metric Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .metric-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+
+        .metric-value {
+            font-size: var(--font-3xl);
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: var(--font-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-change {
+            margin-top: var(--space-xs);
+            font-size: var(--font-sm);
+            font-weight: 600;
+        }
+
+        .metric-change.positive { color: var(--success); }
+        .metric-change.negative { color: var(--error); }
+
+        /* Loading States */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: var(--space-sm);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--text-secondary);
+        }
+
+        .loading-icon {
+            font-size: var(--font-3xl);
+            margin-bottom: var(--space-lg);
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        /* Error States */
+        .error-state {
+            text-align: center;
+            padding: var(--space-2xl);
+            color: var(--error);
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-lg);
+        }
+
+        .error-icon {
+            font-size: var(--font-3xl);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Tags and Badges */
+        .tag {
+            display: inline-block;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-xs) var(--space-sm);
+            font-size: var(--font-xs);
+            color: var(--text-secondary);
+            margin: var(--space-xs);
+        }
+
+        .tag.success { border-color: var(--success); color: var(--success); }
+        .tag.warning { border-color: var(--warning); color: var(--warning); }
+        .tag.error { border-color: var(--error); color: var(--error); }
+
+        /* Links */
+        .external-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .external-link:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-tabs {
+                justify-content: center;
+            }
+
+            .module-header {
+                padding: var(--space-lg);
+            }
+
+            .module-title {
+                font-size: var(--font-2xl);
+            }
+
+            .results-container {
+                padding: var(--space-lg);
+            }
+
+            .data-table {
+                font-size: var(--font-sm);
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            .nav-tab {
+                padding: var(--space-sm) var(--space-md);
+                font-size: var(--font-sm);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--glass-border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(79, 70, 229, 0.3);
+        }
+
+        /* Focus States */
+        button:focus,
+        .nav-tab:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>GPT-5 Crypto Intelligence</h1>
+                        <p>Professional Analytics Suite</p>
+                    </div>
+                </div>
+                
+                <div class="header-controls">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span id="system-status">System Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs" role="tablist">
+            <button class="nav-tab active" data-module="outperformers" role="tab">
+                <i class="fas fa-chart-line"></i>
+                Outperformers
+            </button>
+            <button class="nav-tab" data-module="high-beta" role="tab">
+                <i class="fas fa-bolt"></i>
+                High Beta
+            </button>
+            <button class="nav-tab" data-module="defi-screener" role="tab">
+                <i class="fas fa-filter"></i>
+                DeFi Screener
+            </button>
+            <button class="nav-tab" data-module="microcap" role="tab">
+                <i class="fas fa-gem"></i>
+                Micro-Cap
+            </button>
+            <button class="nav-tab" data-module="deep-dive" role="tab">
+                <i class="fas fa-search"></i>
+                Deep Dive
+            </button>
+        </nav>
+
+        <!-- Module 1: Altcoin Outperformers -->
+        <section id="outperformers-module" class="analysis-module active" role="tabpanel">
+            <div class="module-header">
+                <h2 class="module-title">Altcoin Outperformers</h2>
+                <p class="module-description">
+                    Discover altcoins that have beaten ETH's 30-day performance with AI-powered catalyst analysis
+                </p>
+                
+                <!-- Original Prompt Display -->
+                <div class="prompt-display" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; text-align: left;">
+                    <h4 style="color: var(--primary-light); margin-bottom: var(--space-md); font-size: var(--font-sm); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fas fa-code"></i> Original Implementation Prompt</h4>
+                    <p style="font-family: 'Courier New', monospace; font-size: var(--font-sm); color: var(--text-secondary); line-height: 1.6; background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">
+                        <strong>"altcoin_outperformers":</strong> Find altcoins that beat ETH's 30-day return. Include: ETH benchmark return, 5 outperforming coins with returns, outperformance margin vs ETH, and catalyst/reason for each (recent news or developments).
+                    </p>
+                </div>
+                
+                <button class="analyze-button" onclick="runOutperformersAnalysis()">
+                    <i class="fas fa-rocket"></i> Find Outperformers
+                </button>
+            </div>
+
+            <div class="results-section" id="outperformers-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h3 class="results-title">Altcoins Beating ETH</h3>
+                        <div class="results-meta" id="outperformers-meta"></div>
+                    </div>
+                    <div id="outperformers-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2: High Beta Analysis -->
+        <section id="high-beta-module" class="analysis-module" role="tabpanel">
+            <div class="module-header">
+                <h2 class="module-title">High Beta Analysis</h2>
+                <p class="module-description">
+                    Identify high-volatility altcoins with superior up/down capture ratios vs ETH
+                </p>
+                
+                <!-- Original Prompt Display -->
+                <div class="prompt-display" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; text-align: left;">
+                    <h4 style="color: var(--primary-light); margin-bottom: var(--space-md); font-size: var(--font-sm); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fas fa-code"></i> Original Implementation Prompt</h4>
+                    <p style="font-family: 'Courier New', monospace; font-size: var(--font-sm); color: var(--text-secondary); line-height: 1.6; background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--secondary);">
+                        <strong>"high_beta_analysis":</strong> Find high beta altcoins with superior up/down capture. Beta > 1.2 vs ETH, up-capture > 1.0, down-capture > 1.0. Include: beta values, up/down capture ratios, "buy the blood" levels (current price - 2.5x ATR).
+                    </p>
+                </div>
+                
+                <button class="analyze-button" onclick="runHighBetaAnalysis()">
+                    <i class="fas fa-chart-area"></i> Analyze Beta
+                </button>
+            </div>
+
+            <div class="results-section" id="high-beta-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h3 class="results-title">High Beta Cryptocurrencies</h3>
+                        <div class="results-meta" id="high-beta-meta"></div>
+                    </div>
+                    <div id="high-beta-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3: DeFi Screener -->
+        <section id="defi-screener-module" class="analysis-module" role="tabpanel">
+            <div class="module-header">
+                <h2 class="module-title">DeFi Protocol Screener</h2>
+                <p class="module-description">
+                    Screen DeFi protocols: FDV < $100M, TVL growth > 30%, FDV/TVL < 1
+                </p>
+                
+                <!-- Original Prompt Display -->
+                <div class="prompt-display" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; text-align: left;">
+                    <h4 style="color: var(--primary-light); margin-bottom: var(--space-md); font-size: var(--font-sm); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fas fa-code"></i> Original Implementation Prompt</h4>
+                    <p style="font-family: 'Courier New', monospace; font-size: var(--font-sm); color: var(--text-secondary); line-height: 1.6; background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--success);">
+                        <strong>"defillama_screener":</strong> Screen DeFi protocols with: FDV < $100M, TVL growth > 30%, FDV/TVL < 1. Include: protocol names, chains, metrics, and reasons for TVL growth (airdrops, incentives, launches, partnerships).
+                    </p>
+                </div>
+                
+                <button class="analyze-button" onclick="runDeFiScreener()">
+                    <i class="fas fa-filter"></i> Screen Protocols
+                </button>
+            </div>
+
+            <div class="results-section" id="defi-screener-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h3 class="results-title">Qualified DeFi Protocols</h3>
+                        <div class="results-meta" id="defi-screener-meta"></div>
+                    </div>
+                    <div id="defi-screener-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 4: Micro-Cap Report -->
+        <section id="microcap-module" class="analysis-module" role="tabpanel">
+            <div class="module-header">
+                <h2 class="module-title">Micro-Cap Report</h2>
+                <p class="module-description">
+                    Select micro-cap tokens (<$50M) with highest volume/market cap ratio for fundamental analysis
+                </p>
+                
+                <!-- Original Prompt Display -->
+                <div class="prompt-display" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; text-align: left;">
+                    <h4 style="color: var(--primary-light); margin-bottom: var(--space-md); font-size: var(--font-sm); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fas fa-code"></i> Original Implementation Prompt</h4>
+                    <p style="font-family: 'Courier New', monospace; font-size: var(--font-sm); color: var(--text-secondary); line-height: 1.6; background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--warning);">
+                        <strong>"microcap_report":</strong> Select one micro-cap (<$50M) with rising on-chain volume. Generate fundamental report: team, product, tokenomics, runway, red flags, catalysts, risk assessment.
+                    </p>
+                </div>
+                
+                <button class="analyze-button" onclick="runMicroCapReport()">
+                    <i class="fas fa-microscope"></i> Generate Report
+                </button>
+            </div>
+
+            <div class="results-section" id="microcap-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h3 class="results-title">Micro-Cap Analysis</h3>
+                        <div class="results-meta" id="microcap-meta"></div>
+                    </div>
+                    <div id="microcap-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 5: Deep Dive Analysis -->
+        <section id="deep-dive-module" class="analysis-module" role="tabpanel">
+            <div class="module-header">
+                <h2 class="module-title">Deep Dive Analysis</h2>
+                <p class="module-description">
+                    Comprehensive analysis for specific tokens with catalysts, sentiment, and on-chain flows
+                </p>
+                
+                <!-- Original Prompt Display -->
+                <div class="prompt-display" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; text-align: left;">
+                    <h4 style="color: var(--primary-light); margin-bottom: var(--space-md); font-size: var(--font-sm); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fas fa-code"></i> Original Implementation Prompt</h4>
+                    <p style="font-family: 'Courier New', monospace; font-size: var(--font-sm); color: var(--text-secondary); line-height: 1.6; background: rgba(0,0,0,0.3); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--info);">
+                        <strong>"deep_dive_analysis":</strong> Comprehensive analysis for {TICKER}. Include: token info, 7-day catalysts, social sentiment (bullish/bearish points), on-chain flows (DEX volume, buy/sell ratio, whale movements), strengths, risks.
+                    </p>
+                </div>
+                <div style="margin: var(--space-lg) 0;">
+                    <input type="text" id="deep-dive-ticker" placeholder="Enter ticker symbol (e.g. BTC, ETH, SOL)" 
+                           style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: var(--space-md); color: var(--text-primary); width: 300px; max-width: 100%; margin-right: var(--space-md);">
+                    <button class="analyze-button" onclick="runDeepDiveAnalysis()">
+                        <i class="fas fa-search-plus"></i> Analyze Token
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section" id="deep-dive-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h3 class="results-title">Deep Dive Report</h3>
+                        <div class="results-meta" id="deep-dive-meta"></div>
+                    </div>
+                    <div id="deep-dive-content"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        class CryptoIntelligenceSuite {
+            constructor() {
+                this.API_BASE = 'http://localhost:8080/api';
+                this.isOnline = false;
+                this.init();
+            }
+
+            async init() {
+                await this.checkSystemStatus();
+                this.bindEvents();
+                console.log('🚀 GPT-5 Crypto Intelligence Suite Loaded');
+            }
+
+            bindEvents() {
+                // Tab navigation
+                document.querySelectorAll('.nav-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => this.switchModule(e.target.dataset.module));
+                });
+
+                // Enter key for deep dive search
+                document.getElementById('deep-dive-ticker').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.runDeepDiveAnalysis();
+                    }
+                });
+            }
+
+            async checkSystemStatus() {
+                try {
+                    const response = await fetch(`${this.API_BASE}/health`);
+                    if (response.ok) {
+                        this.isOnline = true;
+                        const statusEl = document.getElementById('system-status');
+                        if (statusEl) {
+                            statusEl.textContent = 'System Online';
+                            statusEl.style.color = 'var(--success)';
+                        }
+                    } else {
+                        throw new Error('System check failed');
+                    }
+                } catch (error) {
+                    this.isOnline = false;
+                    const statusEl = document.getElementById('system-status');
+                    if (statusEl) {
+                        statusEl.textContent = 'System Offline';
+                        statusEl.style.color = 'var(--error)';
+                    }
+                    console.warn('System status check failed:', error);
+                }
+
+                // Recheck every 30 seconds
+                setTimeout(() => this.checkSystemStatus(), 30000);
+            }
+
+            switchModule(moduleId) {
+                // Update tab states
+                document.querySelectorAll('.nav-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector(`[data-module="${moduleId}"]`).classList.add('active');
+
+                // Update module visibility
+                document.querySelectorAll('.analysis-module').forEach(module => {
+                    module.classList.remove('active');
+                });
+                document.getElementById(`${moduleId}-module`).classList.add('active');
+            }
+
+            showLoading(containerId, message = 'Running analysis...') {
+                const container = document.getElementById(containerId);
+                if (!container) {
+                    console.error(`Loading container not found: ${containerId}`);
+                    return;
+                }
+                container.style.display = 'block';
+                container.innerHTML = `
+                    <div class="results-container">
+                        <div class="loading-state">
+                            <div class="loading-icon">
+                                <i class="fas fa-cog fa-spin"></i>
+                            </div>
+                            <h3>Analysis in Progress</h3>
+                            <p>${message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            showError(containerId, message) {
+                const container = document.getElementById(containerId);
+                if (!container) {
+                    console.error(`Error container not found: ${containerId}`);
+                    alert(`Error: ${message}`);
+                    return;
+                }
+                container.style.display = 'block';
+                container.innerHTML = `
+                    <div class="results-container">
+                        <div class="error-state">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Analysis Error</h3>
+                            <p>${message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            formatCurrency(value, decimals = 2) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals
+                }).format(value);
+            }
+
+            formatPercentage(value, decimals = 2) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return `${value.toFixed(decimals)}%`;
+            }
+
+            formatNumber(value, decimals = 0) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return new Intl.NumberFormat('en-US', {
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals
+                }).format(value);
+            }
+
+            // Analysis Module 1: Altcoin Outperformers
+            async runOutperformersAnalysis() {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = '<span class="loading-spinner"></span> Analyzing...';
+                    
+                    this.showLoading('outperformers-results', 'Finding altcoins that beat ETH...');
+                    
+                    const response = await fetch(`${this.API_BASE}/altcoin-outperformers`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Analysis failed');
+                    }
+                    
+                    this.displayOutperformersResults(data);
+                    
+                } catch (error) {
+                    console.error('Outperformers analysis failed:', error);
+                    this.showError('outperformers-results', error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            displayOutperformersResults(data) {
+                const container = document.getElementById('outperformers-results');
+                const metaEl = document.getElementById('outperformers-meta');
+                const contentEl = document.getElementById('outperformers-content');
+                
+                if (!container || !metaEl || !contentEl) {
+                    console.error('Missing DOM elements for outperformers results');
+                    return;
+                }
+                
+                container.style.display = 'block';
+                metaEl.textContent = `Analysis completed • ${data.total_analyzed} tokens analyzed • ${data.analysis_time.substring(0, 19)} UTC`;
+                
+                let html = `
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--info);">${this.formatPercentage(data.eth_benchmark.return_30d)}</div>
+                            <div class="metric-label">ETH 30D Return</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--success);">${data.outperformers.length}</div>
+                            <div class="metric-label">Outperformers Found</div>
+                        </div>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>30D Return</th>
+                                <th>vs ETH</th>
+                                <th>Price</th>
+                                <th>Catalyst</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                data.outperformers.forEach(coin => {
+                    html += `
+                        <tr>
+                            <td><strong>${coin.name}</strong> (${coin.symbol})</td>
+                            <td><span class="metric-change positive">+${this.formatPercentage(coin.return_30d)}</span></td>
+                            <td><span class="metric-change positive">+${this.formatPercentage(coin.vs_eth_pp)}pp</span></td>
+                            <td>${this.formatCurrency(coin.current_price, 6)}</td>
+                            <td style="max-width: 300px;">${coin.catalyst}</td>
+                            <td><a href="${coin.coingecko_link}" target="_blank" class="external-link">View <i class="fas fa-external-link-alt"></i></a></td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+                contentEl.innerHTML = html;
+            }
+
+            // Analysis Module 2: High Beta Analysis
+            async runHighBetaAnalysis() {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = '<span class="loading-spinner"></span> Analyzing...';
+                    
+                    this.showLoading('high-beta-results', 'Calculating beta and capture ratios...');
+                    
+                    const response = await fetch(`${this.API_BASE}/high-beta-analysis`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Analysis failed');
+                    }
+                    
+                    this.displayHighBetaResults(data);
+                    
+                } catch (error) {
+                    console.error('High beta analysis failed:', error);
+                    this.showError('high-beta-results', error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            displayHighBetaResults(data) {
+                const container = document.getElementById('high-beta-results');
+                const metaEl = document.getElementById('high-beta-meta');
+                const contentEl = document.getElementById('high-beta-content');
+                
+                container.style.display = 'block';
+                metaEl.textContent = `${data.methodology} • ${data.lookback_period} lookback • ${data.analysis_time.substring(0, 19)} UTC`;
+                
+                let html = `
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--warning);">${data.high_beta_coins.length}</div>
+                            <div class="metric-label">High Beta Coins</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--info);">Beta > 1.2</div>
+                            <div class="metric-label">Selection Criteria</div>
+                        </div>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Beta vs ETH</th>
+                                <th>Up Capture</th>
+                                <th>Down Capture</th>
+                                <th>Buy-the-Blood Level</th>
+                                <th>Current Price</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                data.high_beta_coins.forEach(coin => {
+                    const betaColor = coin.beta > 2 ? 'var(--error)' : coin.beta > 1.5 ? 'var(--warning)' : 'var(--info)';
+                    html += `
+                        <tr>
+                            <td><strong>${coin.name}</strong> (${coin.symbol})</td>
+                            <td><span style="color: ${betaColor}; font-weight: 600;">${coin.beta}</span></td>
+                            <td><span style="color: var(--success);">${coin.up_capture}</span></td>
+                            <td><span style="color: var(--error);">${coin.down_capture}</span></td>
+                            <td>${this.formatCurrency(coin.buy_blood_level, 6)}</td>
+                            <td>${this.formatCurrency(coin.current_price, 6)}</td>
+                            <td><a href="${coin.coingecko_link}" target="_blank" class="external-link">View <i class="fas fa-external-link-alt"></i></a></td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+                contentEl.innerHTML = html;
+            }
+
+            // Analysis Module 3: DeFi Screener
+            async runDeFiScreener() {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = '<span class="loading-spinner"></span> Screening...';
+                    
+                    this.showLoading('defi-screener-results', 'Screening DeFi protocols...');
+                    
+                    const response = await fetch(`${this.API_BASE}/defillama-screener`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Screening failed');
+                    }
+                    
+                    this.displayDeFiScreenerResults(data);
+                    
+                } catch (error) {
+                    console.error('DeFi screener failed:', error);
+                    this.showError('defi-screener-results', error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            displayDeFiScreenerResults(data) {
+                const container = document.getElementById('defi-screener-results');
+                const metaEl = document.getElementById('defi-screener-meta');
+                const contentEl = document.getElementById('defi-screener-content');
+                
+                container.style.display = 'block';
+                metaEl.textContent = `${data.total_found} protocols qualified • ${data.analysis_time.substring(0, 19)} UTC`;
+                
+                let html = `
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--success);">${data.total_found}</div>
+                            <div class="metric-label">Qualified Protocols</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--info);">< $100M</div>
+                            <div class="metric-label">FDV Filter</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--warning);">> 30%</div>
+                            <div class="metric-label">TVL Growth Filter</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--primary);">< 1.0</div>
+                            <div class="metric-label">FDV/TVL Filter</div>
+                        </div>
+                    </div>
+                `;
+                
+                if (data.qualified_protocols && data.qualified_protocols.length > 0) {
+                    html += `
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Protocol</th>
+                                    <th>Chains</th>
+                                    <th>FDV ($M)</th>
+                                    <th>TVL ($M)</th>
+                                    <th>30D TVL Growth</th>
+                                    <th>FDV/TVL</th>
+                                    <th>Growth Reason</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    data.qualified_protocols.forEach(protocol => {
+                        html += `
+                            <tr>
+                                <td><strong>${protocol.name}</strong></td>
+                                <td>${Array.isArray(protocol.chains) ? protocol.chains.join(', ') : protocol.chains}</td>
+                                <td>${protocol.fdv_millions}</td>
+                                <td>${protocol.tvl_millions}</td>
+                                <td><span class="metric-change positive">+${protocol.tvl_growth_30d}%</span></td>
+                                <td><span style="color: var(--success);">${protocol.fdv_tvl_ratio}</span></td>
+                                <td style="max-width: 250px; font-size: var(--font-sm);">${protocol.growth_reason}</td>
+                                <td><a href="${protocol.defillama_link}" target="_blank" class="external-link">View <i class="fas fa-external-link-alt"></i></a></td>
+                            </tr>
+                        `;
+                    });
+                    
+                    html += '</tbody></table>';
+                } else {
+                    html += `
+                        <div style="text-align: center; padding: var(--space-2xl); color: var(--text-secondary);">
+                            <i class="fas fa-search" style="font-size: var(--font-3xl); margin-bottom: var(--space-md);"></i>
+                            <h3>No Protocols Found</h3>
+                            <p>No DeFi protocols currently meet all screening criteria.</p>
+                        </div>
+                    `;
+                }
+                
+                contentEl.innerHTML = html;
+            }
+
+            // Analysis Module 4: Micro-Cap Report
+            async runMicroCapReport() {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = '<span class="loading-spinner"></span> Generating...';
+                    
+                    this.showLoading('microcap-results', 'Generating micro-cap report...');
+                    
+                    const response = await fetch(`${this.API_BASE}/microcap-report`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Report generation failed');
+                    }
+                    
+                    this.displayMicroCapResults(data);
+                    
+                } catch (error) {
+                    console.error('Micro-cap report failed:', error);
+                    this.showError('microcap-results', error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            displayMicroCapResults(data) {
+                const container = document.getElementById('microcap-results');
+                const metaEl = document.getElementById('microcap-meta');
+                const contentEl = document.getElementById('microcap-content');
+                
+                container.style.display = 'block';
+                metaEl.textContent = `${data.selection_criteria} • ${data.report.analysis_time.substring(0, 19)} UTC`;
+                
+                const coin = data.report.coin_info;
+                const analysis = data.report.fundamental_analysis;
+                
+                let html = `
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--primary);">${coin.name}</div>
+                            <div class="metric-label">${coin.symbol}</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--success);">${this.formatCurrency(coin.current_price, 6)}</div>
+                            <div class="metric-label">Current Price</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--info);">${this.formatCurrency(coin.market_cap / 1000000, 2)}M</div>
+                            <div class="metric-label">Market Cap</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--warning);">${this.formatCurrency(coin.volume_24h, 0)}</div>
+                            <div class="metric-label">24h Volume</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-xl); margin-top: var(--space-2xl);">
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--text-primary);">Fundamental Analysis</h4>
+                            <div style="space-y: var(--space-md);">
+                                <div><strong>Team:</strong> ${analysis.team}</div>
+                                <div><strong>Product:</strong> ${analysis.product}</div>
+                                <div><strong>Tokenomics:</strong> ${analysis.tokenomics}</div>
+                                <div><strong>Runway:</strong> ${analysis.runway}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--error);">Red Flags</h4>
+                            <ul style="list-style: none; padding: 0;">
+                `;
+                
+                data.report.red_flags.forEach(flag => {
+                    html += `<li style="margin-bottom: var(--space-sm);"><i class="fas fa-exclamation-triangle" style="color: var(--error); margin-right: var(--space-sm);"></i>${flag}</li>`;
+                });
+                
+                html += `
+                            </ul>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--success);">Growth Catalysts</h4>
+                            <ul style="list-style: none; padding: 0;">
+                `;
+                
+                data.report.growth_catalysts.forEach(catalyst => {
+                    html += `<li style="margin-bottom: var(--space-sm);"><i class="fas fa-arrow-up" style="color: var(--success); margin-right: var(--space-sm);"></i>${catalyst}</li>`;
+                });
+                
+                html += `
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" style="margin-top: var(--space-xl);">
+                        <h4 style="margin-bottom: var(--space-md); color: var(--warning);">Risk Assessment</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">${data.report.risk_assessment}</p>
+                        <div style="margin-top: var(--space-lg);">
+                            <a href="${coin.coingecko_link}" target="_blank" class="external-link">
+                                <i class="fas fa-external-link-alt"></i> View on CoinGecko
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                contentEl.innerHTML = html;
+            }
+
+            // Analysis Module 5: Deep Dive Analysis
+            async runDeepDiveAnalysis() {
+                const tickerInput = document.getElementById('deep-dive-ticker');
+                if (!tickerInput) {
+                    console.error('Deep dive ticker input not found');
+                    this.showError('deep-dive-results', 'Input field not found');
+                    return;
+                }
+                const ticker = tickerInput.value.trim().toUpperCase();
+                
+                if (!ticker) {
+                    alert('Please enter a ticker symbol');
+                    return;
+                }
+                
+                const button = event.target;
+                const originalText = button.innerHTML;
+                
+                try {
+                    button.disabled = true;
+                    button.innerHTML = '<span class="loading-spinner"></span> Analyzing...';
+                    
+                    this.showLoading('deep-dive-results', `Running deep dive analysis for ${ticker}...`);
+                    
+                    const response = await fetch(`${this.API_BASE}/deep-dive/${ticker}`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Deep dive failed');
+                    }
+                    
+                    this.displayDeepDiveResults(data);
+                    
+                } catch (error) {
+                    console.error('Deep dive analysis failed:', error);
+                    this.showError('deep-dive-results', error.message);
+                } finally {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            displayDeepDiveResults(data) {
+                const container = document.getElementById('deep-dive-results');
+                const metaEl = document.getElementById('deep-dive-meta');
+                const contentEl = document.getElementById('deep-dive-content');
+                
+                container.style.display = 'block';
+                metaEl.textContent = `${data.analysis_type} • ${data.analysis.analysis_time.substring(0, 19)} UTC`;
+                
+                const token = data.analysis.token_info;
+                
+                let html = `
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--primary);">${token.name}</div>
+                            <div class="metric-label">${token.symbol}</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--success);">${this.formatCurrency(token.current_price, 6)}</div>
+                            <div class="metric-label">Current Price</div>
+                            <div class="metric-change ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">
+                                24h: ${this.formatPercentage(token.price_change_24h)}
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--info);">${this.formatCurrency(token.market_cap / 1000000, 0)}M</div>
+                            <div class="metric-label">Market Cap</div>
+                            <div class="metric-change ${token.price_change_7d >= 0 ? 'positive' : 'negative'}">
+                                7d: ${this.formatPercentage(token.price_change_7d)}
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" style="color: var(--warning);">${this.formatCurrency(token.volume_24h, 0)}</div>
+                            <div class="metric-label">24h Volume</div>
+                            <div class="metric-change ${token.price_change_30d >= 0 ? 'positive' : 'negative'}">
+                                30d: ${this.formatPercentage(token.price_change_30d)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Recent Catalysts
+                if (data.analysis.catalysts_7d && data.analysis.catalysts_7d.length > 0) {
+                    html += `
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--text-primary);">Recent Catalysts (7 days)</h4>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Event</th>
+                                        <th>Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    `;
+                    
+                    data.analysis.catalysts_7d.forEach(catalyst => {
+                        const impactColor = catalyst.impact === 'Positive' ? 'var(--success)' : 
+                                          catalyst.impact === 'Negative' ? 'var(--error)' : 'var(--warning)';
+                        html += `
+                            <tr>
+                                <td>${catalyst.date}</td>
+                                <td>${catalyst.event}</td>
+                                <td><span style="color: ${impactColor};">${catalyst.impact}</span></td>
+                            </tr>
+                        `;
+                    });
+                    
+                    html += '</tbody></table></div>';
+                }
+                
+                // Social Sentiment & Analysis Sections
+                html += `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--space-xl); margin-top: var(--space-2xl);">
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--success);">Strengths</h4>
+                            <ul style="list-style: none; padding: 0;">
+                `;
+                
+                data.analysis.strengths.forEach(strength => {
+                    html += `<li style="margin-bottom: var(--space-sm);"><i class="fas fa-check" style="color: var(--success); margin-right: var(--space-sm);"></i>${strength}</li>`;
+                });
+                
+                html += `
+                            </ul>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <h4 style="margin-bottom: var(--space-lg); color: var(--error);">Risks</h4>
+                            <ul style="list-style: none; padding: 0;">
+                `;
+                
+                data.analysis.risks.forEach(risk => {
+                    html += `<li style="margin-bottom: var(--space-sm);"><i class="fas fa-times" style="color: var(--error); margin-right: var(--space-sm);"></i>${risk}</li>`;
+                });
+                
+                html += `
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" style="margin-top: var(--space-xl);">
+                        <h4 style="margin-bottom: var(--space-md); color: var(--info);">Social Sentiment</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
+                            <div>
+                                <h5 style="color: var(--success); margin-bottom: var(--space-md);">Bullish Points</h5>
+                                <ul style="list-style: none; padding: 0;">
+                `;
+                
+                const sentiment = data.analysis.social_sentiment;
+                (sentiment.bullish_points || ['Growing community engagement', 'Positive development updates', 'Increased mentions']).forEach(point => {
+                    html += `<li style="margin-bottom: var(--space-sm); font-size: var(--font-sm);"><i class="fas fa-arrow-up" style="color: var(--success); margin-right: var(--space-sm);"></i>${point}</li>`;
+                });
+                
+                html += `
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: var(--warning); margin-bottom: var(--space-md);">Bearish Points</h5>
+                                <ul style="list-style: none; padding: 0;">
+                `;
+                
+                (sentiment.bearish_points || ['Some profit-taking observed', 'Market uncertainty', 'Competitive pressure']).forEach(point => {
+                    html += `<li style="margin-bottom: var(--space-sm); font-size: var(--font-sm);"><i class="fas fa-arrow-down" style="color: var(--warning); margin-right: var(--space-sm);"></i>${point}</li>`;
+                });
+                
+                html += `
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="margin-top: var(--space-lg); text-align: center;">
+                            <span class="tag success">Overall Sentiment: ${sentiment.overall_sentiment || 'Neutral'}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" style="margin-top: var(--space-xl);">
+                        <h4 style="margin-bottom: var(--space-lg); color: var(--primary);">On-Chain & Market Flows</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg);">
+                `;
+                
+                const flows = data.analysis.on_chain_flows;
+                Object.entries(flows).forEach(([key, value]) => {
+                    const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    html += `
+                        <div style="text-align: center;">
+                            <div style="font-size: var(--font-lg); font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-sm);">
+                                ${value}
+                            </div>
+                            <div style="font-size: var(--font-sm); color: var(--text-secondary);">${label}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: var(--space-2xl); padding: var(--space-lg); border-top: 1px solid var(--glass-border);">
+                        <a href="${token.coingecko_link}" target="_blank" class="external-link">
+                            <i class="fas fa-external-link-alt"></i> View Full Data on CoinGecko
+                        </a>
+                        <div style="margin-top: var(--space-md); font-size: var(--font-sm); color: var(--text-muted);">
+                            ${data.disclaimer}
+                        </div>
+                    </div>
+                `;
+                
+                contentEl.innerHTML = html;
+            }
+        }
+
+        // Global functions for onclick handlers with error handling
+        function runOutperformersAnalysis() {
+            try {
+                if (window.cryptoSuite) {
+                    window.cryptoSuite.runOutperformersAnalysis();
+                } else {
+                    console.error('Crypto suite not initialized');
+                    showGlobalError('System not ready. Please refresh the page.');
+                }
+            } catch (error) {
+                console.error('Error running outperformers analysis:', error);
+                showGlobalError('Analysis error: ' + error.message);
+            }
+        }
+
+        function runHighBetaAnalysis() {
+            try {
+                if (window.cryptoSuite) {
+                    window.cryptoSuite.runHighBetaAnalysis();
+                } else {
+                    console.error('Crypto suite not initialized');
+                    showGlobalError('System not ready. Please refresh the page.');
+                }
+            } catch (error) {
+                console.error('Error running high beta analysis:', error);
+                showGlobalError('Analysis error: ' + error.message);
+            }
+        }
+
+        function runDeFiScreener() {
+            try {
+                if (window.cryptoSuite) {
+                    window.cryptoSuite.runDeFiScreener();
+                } else {
+                    console.error('Crypto suite not initialized');
+                    showGlobalError('System not ready. Please refresh the page.');
+                }
+            } catch (error) {
+                console.error('Error running DeFi screener:', error);
+                showGlobalError('Analysis error: ' + error.message);
+            }
+        }
+
+        function runMicroCapReport() {
+            try {
+                if (window.cryptoSuite) {
+                    window.cryptoSuite.runMicroCapReport();
+                } else {
+                    console.error('Crypto suite not initialized');
+                    showGlobalError('System not ready. Please refresh the page.');
+                }
+            } catch (error) {
+                console.error('Error running micro-cap report:', error);
+                showGlobalError('Analysis error: ' + error.message);
+            }
+        }
+
+        function runDeepDiveAnalysis() {
+            try {
+                if (window.cryptoSuite) {
+                    window.cryptoSuite.runDeepDiveAnalysis();
+                } else {
+                    console.error('Crypto suite not initialized');
+                    showGlobalError('System not ready. Please refresh the page.');
+                }
+            } catch (error) {
+                console.error('Error running deep dive analysis:', error);
+                showGlobalError('Analysis error: ' + error.message);
+            }
+        }
+
+        function showGlobalError(message) {
+            // Show error in currently visible module
+            const activeModule = document.querySelector('.analysis-module.active');
+            if (activeModule) {
+                const resultsSection = activeModule.querySelector('.results-section');
+                if (resultsSection && window.cryptoSuite) {
+                    window.cryptoSuite.showError(resultsSection.id, message);
+                } else {
+                    alert(message);
+                }
+            } else {
+                alert(message);
+            }
+        }
+
+        // Initialize when DOM is ready with better error handling
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                console.log('Initializing Crypto Intelligence Suite...');
+                window.cryptoSuite = new CryptoIntelligenceSuite();
+                console.log('Suite initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize Crypto Intelligence Suite:', error);
+                const statusEl = document.getElementById('system-status');
+                if (statusEl) {
+                    statusEl.textContent = 'System Error';
+                    statusEl.style.color = 'var(--error)';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

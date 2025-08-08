@@ -1,0 +1,818 @@
+2025-08-08 13:48:44,444 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 13:49:02,696 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 13:49:02,720 - __main__ - INFO - Ultimate cache manager initialized
+2025-08-08 13:49:02,721 - __main__ - INFO - Ultimate HTTP client initialized
+2025-08-08 13:49:02,721 - __main__ - INFO - Crypto Analysis Suite initialized successfully
+2025-08-08 13:50:39,429 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 13:50:39,453 - __main__ - INFO - Ultimate cache manager initialized
+2025-08-08 13:50:39,453 - __main__ - INFO - Ultimate HTTP client initialized
+2025-08-08 13:50:39,454 - __main__ - INFO - Crypto Analysis Suite initialized successfully
+2025-08-08 13:50:39,471 - __main__ - INFO - Redis cache: disabled
+2025-08-08 13:50:39,471 - __main__ - INFO - Thread pool: 16 workers
+2025-08-08 13:50:39,471 - __main__ - INFO - Rate limiting: 1000/hour
+2025-08-08 13:50:39,471 - __main__ - INFO - ============================================================
+2025-08-08 13:50:39,471 - __main__ - INFO - ULTIMATE FEATURES ACTIVE:
+2025-08-08 13:50:39,475 - __main__ - INFO - ============================================================
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  / - Ultimate Dashboard
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/status - Enhanced system status
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/health - Detailed health check
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/metrics - Prometheus metrics
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/risk-analysis - AI Risk Intelligence
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/sector-intelligence - Predictive Sector Analysis
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/alpha-generation - Systematic Alpha Signals
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/yield-optimization - DeFi Yield Optimization
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/market-intelligence - Market Intelligence Hub
+2025-08-08 13:50:39,477 - __main__ - INFO -   GET  /api/portfolio-optimization - Portfolio Optimization
+2025-08-08 13:50:39,477 - __main__ - INFO -   WS   /socket.io/ - Real-time WebSocket updates
+2025-08-08 13:50:39,477 - __main__ - INFO - ============================================================
+2025-08-08 13:50:39,480 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8080
+2025-08-08 13:50:39,480 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-08 13:52:42,820 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:52:42] "GET / HTTP/1.1" 200 -
+2025-08-08 13:53:08,467 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:53:08,470 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:53:08,470 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:53:08] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:53:14,199 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:53:14] "GET /api/health HTTP/1.1" 200 -
+2025-08-08 13:53:18,911 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:53:18] "GET / HTTP/1.1" 200 -
+2025-08-08 13:55:14,687 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:55:14] "GET / HTTP/1.1" 200 -
+2025-08-08 13:55:14,940 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:55:14] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-08-08 13:55:15,261 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:55:15] "[33mPOST /api/metrics/web-vitals HTTP/1.1[0m" 404 -
+2025-08-08 13:55:15,845 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:55:15,846 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:55:15,846 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:55:15] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:55:47,390 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:55:47,391 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:55:47,391 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:55:47] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:56:18,407 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:56:18,408 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:56:18,409 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:56:18] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:56:50,383 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:56:50,384 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:56:50,384 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:56:50] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:57:22,082 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:57:22,083 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:57:22,083 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:57:22] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:57:54,389 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:57:54,391 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:57:54,391 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:57:54] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:58:26,078 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:58:26,079 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:58:26,079 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:58:26] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:58:31,406 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:58:31] "GET / HTTP/1.1" 200 -
+2025-08-08 13:58:36,733 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 13:58:36,733 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    return jsonify({'error': 'Risk analysis temporarily unavailable'}), 503
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 13:58:36,751 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:58:36,752 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:58:36] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 13:58:58,385 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    'total_requests': REQUEST_COUNT._value.sum(),
+                      ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:58:58,386 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:58:58,387 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:58:58] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 13:59:30,082 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 13:59:30,083 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 13:59:30,084 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 13:59:30] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:00:02,397 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:00:02,398 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:00:02,398 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:00:02] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:00:29,417 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 14:00:29,442 - __main__ - INFO - Ultimate cache manager initialized
+2025-08-08 14:00:29,442 - __main__ - INFO - Ultimate HTTP client initialized
+2025-08-08 14:00:29,442 - __main__ - INFO - Crypto Analysis Suite initialized successfully
+2025-08-08 14:00:29,446 - __main__ - INFO - Redis cache: disabled
+2025-08-08 14:00:29,446 - __main__ - INFO - Thread pool: 16 workers
+2025-08-08 14:00:29,446 - __main__ - INFO - Rate limiting: 1000/hour
+2025-08-08 14:00:29,447 - __main__ - INFO - ============================================================
+2025-08-08 14:00:29,447 - __main__ - INFO - ULTIMATE FEATURES ACTIVE:
+2025-08-08 14:00:29,451 - __main__ - INFO - ============================================================
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  / - Ultimate Dashboard
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/status - Enhanced system status
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/health - Detailed health check
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/metrics - Prometheus metrics
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/risk-analysis - AI Risk Intelligence
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/sector-intelligence - Predictive Sector Analysis
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/alpha-generation - Systematic Alpha Signals
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/yield-optimization - DeFi Yield Optimization
+2025-08-08 14:00:29,452 - __main__ - INFO -   GET  /api/market-intelligence - Market Intelligence Hub
+2025-08-08 14:00:29,453 - __main__ - INFO -   GET  /api/portfolio-optimization - Portfolio Optimization
+2025-08-08 14:00:29,453 - __main__ - INFO -   WS   /socket.io/ - Real-time WebSocket updates
+2025-08-08 14:00:29,453 - __main__ - INFO - ============================================================
+2025-08-08 14:00:29,456 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8080
+2025-08-08 14:00:29,456 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-08 14:00:34,081 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:00:34,082 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:00:34,083 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:00:34] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:00:38,853 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:00:38,853 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    return jsonify({'error': 'Risk analysis temporarily unavailable'}), 503
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:00:38,855 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:00:38,855 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:00:38] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 14:00:42,816 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:00:42,816 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    return jsonify({'error': 'Risk analysis temporarily unavailable'}), 503
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:00:42,817 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:00:42,818 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:00:42] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 14:01:06,396 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:01:06,397 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:01:06,398 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:01:06] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:01:38,077 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:01:38,078 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:01:38,078 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:01:38] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:01:59,135 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 14:01:59,161 - __main__ - INFO - Ultimate cache manager initialized
+2025-08-08 14:01:59,161 - __main__ - INFO - Ultimate HTTP client initialized
+2025-08-08 14:01:59,161 - __main__ - INFO - Crypto Analysis Suite initialized successfully
+2025-08-08 14:01:59,165 - __main__ - INFO - Redis cache: disabled
+2025-08-08 14:01:59,165 - __main__ - INFO - Thread pool: 16 workers
+2025-08-08 14:01:59,165 - __main__ - INFO - Rate limiting: 1000/hour
+2025-08-08 14:01:59,166 - __main__ - INFO - ============================================================
+2025-08-08 14:01:59,166 - __main__ - INFO - ULTIMATE FEATURES ACTIVE:
+2025-08-08 14:01:59,170 - __main__ - INFO - ============================================================
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  / - Ultimate Dashboard
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/status - Enhanced system status
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/health - Detailed health check
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/metrics - Prometheus metrics
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/risk-analysis - AI Risk Intelligence
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/sector-intelligence - Predictive Sector Analysis
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/alpha-generation - Systematic Alpha Signals
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/yield-optimization - DeFi Yield Optimization
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/market-intelligence - Market Intelligence Hub
+2025-08-08 14:01:59,171 - __main__ - INFO -   GET  /api/portfolio-optimization - Portfolio Optimization
+2025-08-08 14:01:59,171 - __main__ - INFO -   WS   /socket.io/ - Real-time WebSocket updates
+2025-08-08 14:01:59,171 - __main__ - INFO - ============================================================
+2025-08-08 14:01:59,176 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8080
+2025-08-08 14:01:59,176 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-08 14:02:02,529 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:02,529 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    logger.error(f"Risk analysis error: {e}")
+           ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:02,530 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:02:02,531 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:02:02] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 14:02:10,394 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:02:10,395 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:02:10,396 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:02:10] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:02:28,141 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:28,141 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    'timestamp': datetime.now().isoformat()
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:28,143 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:02:28,143 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:02:28] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 14:02:42,076 - crypto_server_ultimate - ERROR - Exception on /api/status [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 540, in api_status
+    },
+    
+AttributeError: 'Counter' object has no attribute '_value'
+2025-08-08 14:02:42,077 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:02:42,077 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:02:42] "[35m[1mGET /api/status HTTP/1.1[0m" 500 -
+2025-08-08 14:02:59,595 - __main__ - ERROR - Risk analysis error: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:59,595 - crypto_server_ultimate - ERROR - Exception on /api/risk-analysis [GET]
+Traceback (most recent call last):
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 444, in decorated_function
+    result = f(*args, **kwargs)
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask_limiter\extension.py", line 1314, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 470, in decorated_function
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Users\AMD\.local\bin\GPT5-Analytics-x-Prompting-Guide\crypto_server_ultimate.py", line 840, in risk_analysis
+    'timestamp': datetime.now().isoformat()
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "C:\Users\AMD\AppData\Local\Programs\Python\Python313\Lib\site-packages\werkzeug\local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-08-08 14:02:59,597 - __main__ - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-08-08 14:02:59,597 - werkzeug - INFO - 127.0.0.1 - - [08/Aug/2025 14:02:59] "[35m[1mGET /api/risk-analysis HTTP/1.1[0m" 500 -
+2025-08-08 14:03:29,965 - __main__ - WARNING - Redis not available - using in-memory cache only: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+2025-08-08 14:03:29,990 - __main__ - INFO - Ultimate cache manager initialized
+2025-08-08 14:03:29,990 - __main__ - INFO - Ultimate HTTP client initialized
+2025-08-08 14:03:29,990 - __main__ - INFO - Crypto Analysis Suite initialized successfully
+2025-08-08 14:03:29,994 - __main__ - INFO - Redis cache: disabled
+2025-08-08 14:03:29,994 - __main__ - INFO - Thread pool: 16 workers
+2025-08-08 14:03:29,994 - __main__ - INFO - Rate limiting: 1000/hour
+2025-08-08 14:03:29,995 - __main__ - INFO - ============================================================
+2025-08-08 14:03:29,995 - __main__ - INFO - ULTIMATE FEATURES ACTIVE:
+2025-08-08 14:03:29,999 - __main__ - INFO - ============================================================
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  / - Ultimate Dashboard
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/status - Enhanced system status
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/health - Detailed health check
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/metrics - Prometheus metrics
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/risk-analysis - AI Risk Intelligence
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/sector-intelligence - Predictive Sector Analysis
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/alpha-generation - Systematic Alpha Signals
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/yield-optimization - DeFi Yield Optimization
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/market-intelligence - Market Intelligence Hub
+2025-08-08 14:03:30,000 - __main__ - INFO -   GET  /api/portfolio-optimization - Portfolio Optimization
+2025-08-08 14:03:30,000 - __main__ - INFO -   WS   /socket.io/ - Real-time WebSocket updates
+2025-08-08 14:03:30,000 - __main__ - INFO - ============================================================
+2025-08-08 14:03:30,003 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8080
+2025-08-08 14:03:30,003 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

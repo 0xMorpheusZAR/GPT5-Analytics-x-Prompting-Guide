@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Test</title>
+</head>
+<body>
+    <script>
+        // Test the dashboard by simulating a function call
+        console.log('Testing dashboard JavaScript...');
+        
+        // Simulate clicking on the outperformers button
+        setTimeout(() => {
+            console.log('Simulating dashboard load...');
+            
+            // Test if we can access the main page
+            fetch('http://localhost:8080/')
+                .then(response => response.text())
+                .then(html => {
+                    console.log('✅ Dashboard loads successfully');
+                    
+                    // Test if API endpoints work
+                    return fetch('http://localhost:8080/api/health');
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('✅ Backend API working:', data.status);
+                    console.log('✅ All modules available:', data.modules);
+                    
+                    // Test a quick analysis
+                    return fetch('http://localhost:8080/api/altcoin-outperformers');
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('✅ Altcoin Outperformers working - found', data.outperformers.length, 'coins');
+                        console.log('🎉 DASHBOARD FULLY OPERATIONAL!');
+                        
+                        // Display results
+                        document.body.innerHTML = `
+                            <h1>✅ Dashboard Test Results</h1>
+                            <p><strong>Status:</strong> All systems operational</p>
+                            <p><strong>Backend:</strong> ${data.status}</p>
+                            <p><strong>Outperformers Found:</strong> ${data.outperformers.length}</p>
+                            <p><strong>ETH Benchmark:</strong> ${data.eth_benchmark.return_30d}%</p>
+                            <h2>Top Outperformers:</h2>
+                            <ul>
+                                ${data.outperformers.map(coin => 
+                                    `<li><strong>${coin.symbol}</strong>: +${coin.return_30d}% (vs ETH: +${coin.vs_eth_pp}pp)</li>`
+                                ).join('')}
+                            </ul>
+                            <p><a href="http://localhost:8080/" target="_blank">🔗 Open Full Dashboard</a></p>
+                        `;
+                    } else {
+                        throw new Error('Analysis failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Dashboard test failed:', error);
+                    document.body.innerHTML = `
+                        <h1>❌ Dashboard Test Failed</h1>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Please check the console for more details.</p>
+                    `;
+                });
+        }, 1000);
+    </script>
+    
+    <h1>Testing Dashboard...</h1>
+    <p>Please wait while we test the dashboard functionality...</p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+</head>
+<body>
+    <button onclick="testAPI()">Test API</button>
+    <div id="results"></div>
+
+    <script>
+        async function testAPI() {
+            console.log('Testing API...');
+            document.getElementById('results').innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('http://localhost:8080/api/altcoin-outperformers');
+                const data = await response.json();
+                
+                console.log('API Response:', data);
+                document.getElementById('results').innerHTML = `
+                    <h3>API Test Results</h3>
+                    <p>Status: ${data.status}</p>
+                    <p>Outperformers: ${data.outperformers.length}</p>
+                    <p>ETH Return: ${data.eth_benchmark.return_30d}%</p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                console.error('API Error:', error);
+                document.getElementById('results').innerHTML = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

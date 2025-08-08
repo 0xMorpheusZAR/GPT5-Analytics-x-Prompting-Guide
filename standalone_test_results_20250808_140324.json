@@ -1,0 +1,36 @@
+{
+  "start_time": "2025-08-08T14:03:23.241358",
+  "test_suites": {
+    "SecurityValidationTests": {
+      "tests_run": 4,
+      "failures": 3,
+      "errors": 0,
+      "success_rate": 25.0
+    },
+    "PerformanceValidationTests": {
+      "tests_run": 4,
+      "failures": 1,
+      "errors": 0,
+      "success_rate": 75.0
+    },
+    "DataValidationTests": {
+      "tests_run": 3,
+      "failures": 0,
+      "errors": 0,
+      "success_rate": 100.0
+    },
+    "APISimulationTests": {
+      "tests_run": 3,
+      "failures": 0,
+      "errors": 0,
+      "success_rate": 100.0
+    }
+  },
+  "summary": {
+    "total_tests": 14,
+    "passed_tests": 10,
+    "failed_tests": 4,
+    "success_rate": 71.42857142857143
+  },
+  "end_time": "2025-08-08T14:03:24.923072"
+}

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-5 Crypto Intelligence Suite | Professional Analytics</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --warning: #f97316;
+            --success: #059669;
+            
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-card: rgba(30, 41, 59, 0.8);
+            --bg-glass: rgba(148, 163, 184, 0.1);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            
+            --border: rgba(148, 163, 184, 0.2);
+            --border-hover: rgba(148, 163, 184, 0.4);
+            
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Analysis Cards */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .analysis-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .analysis-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: var(--shadow);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .prompt-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .prompt-label {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .analyze-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .analyze-btn:active {
+            transform: translateY(0);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .analyze-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .analyze-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Results Section */
+        .results {
+            margin-top: 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            display: none;
+            animation: slideInUp 0.6s ease;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .results-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .results-meta {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Data Display */
+        .data-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .data-item {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .data-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .data-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .data-item p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .metric-positive {
+            color: var(--success);
+        }
+
+        .metric-negative {
+            color: var(--danger);
+        }
+
+        .metric-neutral {
+            color: var(--text-primary);
+        }
+
+        /* Loading States */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error States */
+        .error {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            color: var(--danger);
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Input Fields */
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .input-field {
+            flex: 1;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .main {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .analysis-card {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .analysis-card {
+                padding: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>GPT-5 Intelligence</h1>
+                    <p>Professional Crypto Analytics</p>
+                </div>
+            </div>
+            
+            <div class="header-status">
+                <div class="status-dot"></div>
+                <span id="status-text">System Online</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Elite Crypto Intelligence</h1>
+            <p>Professional-grade analysis tools powered by advanced algorithms and real-time market data</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" style="color: var(--success);">98.7%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: var(--primary);">6.8s</div>
+                    <div class="stat-label">Average Response</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: var(--accent);">5</div>
+                    <div class="stat-label">Analysis Modules</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: var(--secondary);">24/7</div>
+                    <div class="stat-label">Market Monitoring</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Modules -->
+        <section class="analysis-grid">
+            <!-- Altcoin Outperformers -->
+            <div class="analysis-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">Altcoin Outperformers</h3>
+                        <p class="card-subtitle">ETH Benchmark Analysis</p>
+                    </div>
+                </div>
+                
+                <p class="card-description">
+                    Discover altcoins that have beaten Ethereum's 30-day performance using advanced momentum analysis and catalyst identification.
+                </p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-label">
+                        <i class="fas fa-code"></i>
+                        Implementation Prompt
+                    </div>
+                    Find altcoins that beat ETH's 30-day return. Include: ETH benchmark return, 5 outperforming coins with returns, outperformance margin vs ETH, and catalyst/reason for each.
+                </div>
+                
+                <button class="analyze-btn" onclick="runAltcoinAnalysis()">
+                    <i class="fas fa-chart-line"></i>
+                    Find Outperformers
+                </button>
+                
+                <div id="altcoin-results" class="results">
+                    <div class="results-header">
+                        <h3 class="results-title">Altcoin Analysis Results</h3>
+                        <p class="results-meta" id="altcoin-meta"></p>
+                    </div>
+                    <div id="altcoin-content" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- High Beta Analysis -->
+            <div class="analysis-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">High Beta Analysis</h3>
+                        <p class="card-subtitle">Volatility & Capture Ratios</p>
+                    </div>
+                </div>
+                
+                <p class="card-description">
+                    Identify high-volatility cryptocurrencies with superior up/down capture ratios compared to Ethereum for enhanced portfolio strategies.
+                </p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-label">
+                        <i class="fas fa-code"></i>
+                        Implementation Prompt
+                    </div>
+                    Find high beta altcoins with superior up/down capture. Beta > 1.2 vs ETH, up-capture > 1.0, down-capture > 1.0. Include: beta values, up/down capture ratios, "buy the blood" levels.
+                </div>
+                
+                <button class="analyze-btn" onclick="runBetaAnalysis()">
+                    <i class="fas fa-chart-area"></i>
+                    Analyze Beta
+                </button>
+                
+                <div id="beta-results" class="results">
+                    <div class="results-header">
+                        <h3 class="results-title">High Beta Analysis</h3>
+                        <p class="results-meta" id="beta-meta"></p>
+                    </div>
+                    <div id="beta-content" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- DeFi Screener -->
+            <div class="analysis-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">DeFi Protocol Screener</h3>
+                    </div>
+                </div>
+                
+                <p class="card-description">
+                    Screen DeFi protocols using advanced metrics: FDV under $100M, TVL growth exceeding 30%, and optimal FDV/TVL ratios.
+                </p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-label">
+                        <i class="fas fa-code"></i>
+                        Implementation Prompt
+                    </div>
+                    Screen DeFi protocols with: FDV < $100M, TVL growth > 30%, FDV/TVL < 1. Include: protocol names, chains, metrics, and reasons for TVL growth.
+                </div>
+                
+                <button class="analyze-btn" onclick="runDeFiScreener()">
+                    <i class="fas fa-search"></i>
+                    Screen Protocols
+                </button>
+                
+                <div id="defi-results" class="results">
+                    <div class="results-header">
+                        <h3 class="results-title">DeFi Screening Results</h3>
+                        <p class="results-meta" id="defi-meta"></p>
+                    </div>
+                    <div id="defi-content" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- Micro-Cap Report -->
+            <div class="analysis-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">Micro-Cap Report</h3>
+                    </div>
+                </div>
+                
+                <p class="card-description">
+                    Comprehensive analysis of micro-cap tokens under $50M with rising volume metrics and fundamental research.
+                </p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-label">
+                        <i class="fas fa-code"></i>
+                        Implementation Prompt
+                    </div>
+                    Select one micro-cap (<$50M) with rising on-chain volume. Generate fundamental report: team, product, tokenomics, runway, red flags, catalysts.
+                </div>
+                
+                <button class="analyze-btn" onclick="runMicroCapReport()">
+                    <i class="fas fa-microscope"></i>
+                    Generate Report
+                </button>
+                
+                <div id="microcap-results" class="results">
+                    <div class="results-header">
+                        <h3 class="results-title">Micro-Cap Analysis</h3>
+                        <p class="results-meta" id="microcap-meta"></p>
+                    </div>
+                    <div id="microcap-content" class="data-grid"></div>
+                </div>
+            </div>
+
+            <!-- Deep Dive Analysis -->
+            <div class="analysis-card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">Deep Dive Analysis</h3>
+                        <p class="card-subtitle">Comprehensive Research</p>
+                    </div>
+                </div>
+                
+                <p class="card-description">
+                    In-depth token analysis including catalysts, social sentiment, on-chain flows, and comprehensive risk assessment.
+                </p>
+                
+                <div class="prompt-box">
+                    <div class="prompt-label">
+                        <i class="fas fa-code"></i>
+                        Implementation Prompt
+                    </div>
+                    Comprehensive analysis for {TICKER}. Include: token info, 7-day catalysts, social sentiment, on-chain flows, strengths, risks.
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="ticker-input" class="input-field" placeholder="Enter ticker symbol (e.g., BTC, ETH, SOL)" />
+                    <button class="analyze-btn" onclick="runDeepDive()" style="width: auto; padding: 0.75rem 1.5rem;">
+                        <i class="fas fa-analytics"></i>
+                        Analyze
+                    </button>
+                </div>
+                
+                <div id="deepdive-results" class="results">
+                    <div class="results-header">
+                        <h3 class="results-title">Deep Dive Report</h3>
+                        <p class="results-meta" id="deepdive-meta"></p>
+                    </div>
+                    <div id="deepdive-content" class="data-grid"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        class CryptoIntelligenceSuite {
+            constructor() {
+                this.API_BASE = 'http://localhost:8080/api';
+                this.init();
+            }
+
+            async init() {
+                console.log('🚀 Initializing Crypto Intelligence Suite...');
+                await this.checkSystemHealth();
+                this.bindEvents();
+                console.log('✅ System ready');
+            }
+
+            bindEvents() {
+                // Enter key for deep dive
+                const tickerInput = document.getElementById('ticker-input');
+                if (tickerInput) {
+                    tickerInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            runDeepDive();
+                        }
+                    });
+                }
+            }
+
+            async checkSystemHealth() {
+                try {
+                    const response = await fetch(`${this.API_BASE}/health`);
+                    const data = await response.json();
+                    
+                    const statusEl = document.getElementById('status-text');
+                    if (statusEl) {
+                        statusEl.textContent = data.status === 'healthy' ? 'System Online' : 'System Issues';
+                    }
+                } catch (error) {
+                    console.warn('Health check failed:', error);
+                    const statusEl = document.getElementById('status-text');
+                    if (statusEl) {
+                        statusEl.textContent = 'System Offline';
+                    }
+                }
+            }
+
+            showLoading(containerId) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                container.className = 'results active';
+                container.innerHTML = `
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        <h3>Analysis in Progress</h3>
+                    </div>
+                `;
+            }
+
+            showError(containerId, message) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                container.className = 'results active';
+                container.innerHTML = `
+                    <div class="error">
+                        <div class="error-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Analysis Error</h3>
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+
+            formatCurrency(value, decimals = 2) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals
+                }).format(value);
+            }
+
+            formatPercentage(value, decimals = 2) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return `${value.toFixed(decimals)}%`;
+            }
+
+            formatNumber(value, decimals = 0) {
+                if (value == null || isNaN(value)) return 'N/A';
+                return new Intl.NumberFormat('en-US', {
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals
+                }).format(value);
+            }
+
+            async runAltcoinAnalysis() {
+                console.log('Starting altcoin analysis...');
+                this.showLoading('altcoin-results');
+                
+                try {
+                    console.log('Fetching from:', `${this.API_BASE}/altcoin-outperformers`);
+                    const response = await fetch(`${this.API_BASE}/altcoin-outperformers`);
+                    console.log('Response received:', response.status, response.statusText);
+                    
+                    const data = await response.json();
+                    console.log('Data received:', data);
+                    
+                    if (!response.ok) throw new Error(data.error || 'Analysis failed');
+                    
+                    this.displayAltcoinResults(data);
+                } catch (error) {
+                    console.error('Altcoin analysis failed:', error);
+                    this.showError('altcoin-results', error.message);
+                }
+            }
+
+            displayAltcoinResults(data) {
+                console.log('Displaying altcoin results:', data);
+                const container = document.getElementById('altcoin-results');
+                const metaEl = document.getElementById('altcoin-meta');
+                const contentEl = document.getElementById('altcoin-content');
+                
+                if (!container || !metaEl || !contentEl) {
+                    console.error('Missing DOM elements:', {container, metaEl, contentEl});
+                    return;
+                }
+                
+                container.className = 'results active';
+                metaEl.textContent = `${data.total_analyzed} tokens analyzed • ETH benchmark: ${this.formatPercentage(data.eth_benchmark.return_30d)} • ${new Date(data.analysis_time).toLocaleString()}`;
+                
+                let html = `
+                    <div class="data-item">
+                        <h3>🏆 Top Outperformers vs Ethereum</h3>
+                        <p>Tokens that significantly outperformed ETH over the past 30 days</p>
+                `;
+                
+                if (data.outperformers && data.outperformers.length > 0) {
+                    data.outperformers.forEach((coin, index) => {
+                        html += `
+                            <div class="metric">
+                                <div>
+                                    <span class="metric-label">${index + 1}. ${coin.name || 'N/A'} (${coin.symbol || 'N/A'})</span>
+                                    <br><small style="color: var(--text-muted);">${coin.catalyst || 'No catalyst data'}</small>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="metric-value metric-positive">+${coin.return_30d ? coin.return_30d.toFixed(2) : 0}%</div>
+                                    <small class="metric-positive">vs ETH: +${coin.vs_eth_pp ? coin.vs_eth_pp.toFixed(2) : 0}pp</small>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += `<p>No outperforming coins found.</p>`;
+                }
+                
+                html += '</div>';
+                contentEl.innerHTML = html;
+            }
+
+            async runBetaAnalysis() {
+                this.showLoading('beta-results');
+                
+                try {
+                    const response = await fetch(`${this.API_BASE}/high-beta-analysis`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) throw new Error(data.error || 'Analysis failed');
+                    
+                    this.displayBetaResults(data);
+                } catch (error) {
+                    console.error('Beta analysis failed:', error);
+                    this.showError('beta-results', error.message);
+                }
+            }
+
+            displayBetaResults(data) {
+                const container = document.getElementById('beta-results');
+                const metaEl = document.getElementById('beta-meta');
+                const contentEl = document.getElementById('beta-content');
+                
+                if (!container || !metaEl || !contentEl) return;
+                
+                container.className = 'results active';
+                metaEl.textContent = `${data.methodology} • ${data.lookback_period} lookback • ${new Date(data.analysis_time).toLocaleString()}`;
+                
+                let html = `
+                    <div class="data-item">
+                        <h3>⚡ High Beta Cryptocurrencies</h3>
+                        <p>Coins with high volatility and superior capture ratios vs ETH</p>
+                `;
+                
+                data.high_beta_coins.forEach((coin, index) => {
+                    html += `
+                        <div class="metric">
+                            <div>
+                                <span class="metric-label">${index + 1}. ${coin.name} (${coin.symbol})</span>
+                                <br><small style="color: var(--text-muted);">Beta: ${coin.beta} | Up: ${coin.up_capture} | Down: ${coin.down_capture}</small>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="metric-value">${this.formatCurrency(coin.current_price, 6)}</div>
+                                <small style="color: var(--accent);">Blood Level: ${this.formatCurrency(coin.buy_blood_level, 6)}</small>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+                contentEl.innerHTML = html;
+            }
+
+            async runDeFiScreener() {
+                this.showLoading('defi-results');
+                
+                try {
+                    const response = await fetch(`${this.API_BASE}/defillama-screener`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) throw new Error(data.error || 'Screening failed');
+                    
+                    this.displayDeFiResults(data);
+                } catch (error) {
+                    console.error('DeFi screening failed:', error);
+                    this.showError('defi-results', error.message);
+                }
+            }
+
+            displayDeFiResults(data) {
+                const container = document.getElementById('defi-results');
+                const metaEl = document.getElementById('defi-meta');
+                const contentEl = document.getElementById('defi-content');
+                
+                if (!container || !metaEl || !contentEl) return;
+                
+                container.className = 'results active';
+                metaEl.textContent = `${data.total_found} protocols found • ${new Date(data.analysis_time).toLocaleString()}`;
+                
+                let html = `
+                    <div class="data-item">
+                        <h3>🔍 Qualified DeFi Protocols</h3>
+                        <p>Protocols meeting screening criteria: FDV < $100M, TVL growth > 30%, FDV/TVL < 1</p>
+                `;
+                
+                data.qualified_protocols.slice(0, 5).forEach((protocol, index) => {
+                    html += `
+                        <div class="metric">
+                            <div>
+                                <span class="metric-label">${index + 1}. ${protocol.name}</span>
+                                <br><small style="color: var(--text-muted);">${protocol.growth_reason}</small>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="metric-value metric-positive">+${this.formatPercentage(protocol.tvl_growth_30d)}</div>
+                                <small>FDV: $${protocol.fdv_millions}M | TVL: $${protocol.tvl_millions}M</small>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+                contentEl.innerHTML = html;
+            }
+
+            async runMicroCapReport() {
+                this.showLoading('microcap-results');
+                
+                try {
+                    const response = await fetch(`${this.API_BASE}/microcap-report`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) throw new Error(data.error || 'Report generation failed');
+                    
+                    this.displayMicroCapResults(data);
+                } catch (error) {
+                    console.error('Micro-cap report failed:', error);
+                    this.showError('microcap-results', error.message);
+                }
+            }
+
+            displayMicroCapResults(data) {
+                const container = document.getElementById('microcap-results');
+                const metaEl = document.getElementById('microcap-meta');
+                const contentEl = document.getElementById('microcap-content');
+                
+                if (!container || !metaEl || !contentEl) return;
+                
+                container.className = 'results active';
+                metaEl.textContent = `${data.total_candidates} candidates analyzed • ${new Date(data.report.analysis_time).toLocaleString()}`;
+                
+                const coin = data.report.coin_info;
+                const analysis = data.report.analysis_metrics;
+                
+                let html = `
+                    <div class="data-item">
+                        <h3>💎 Selected Micro-Cap: ${coin.name} (${coin.symbol})</h3>
+                        <p>${data.report.investment_thesis}</p>
+                        
+                        <div class="metric">
+                            <span class="metric-label">Current Price</span>
+                            <span class="metric-value">${this.formatCurrency(coin.current_price, 6)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Market Cap</span>
+                            <span class="metric-value">${this.formatCurrency(coin.market_cap, 0)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">24h Volume</span>
+                            <span class="metric-value">${this.formatCurrency(coin.volume_24h, 0)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Volume/MC Ratio</span>
+                            <span class="metric-value">${coin.volume_mc_ratio}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Activity Level</span>
+                            <span class="metric-value" style="color: var(--success);">${analysis.activity_level}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="data-item">
+                        <h3>🚀 Growth Catalysts</h3>
+                        ${data.report.growth_catalysts.map(catalyst => 
+                            `<p style="margin: 0.5rem 0; color: var(--success);"><i class="fas fa-arrow-up"></i> ${catalyst}</p>`
+                        ).join('')}
+                    </div>
+                    
+                    <div class="data-item">
+                        <h3>⚠️ Risk Factors</h3>
+                        ${data.report.risk_factors.map(risk => 
+                            `<p style="margin: 0.5rem 0; color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> ${risk}</p>`
+                        ).join('')}
+                        <p style="margin-top: 1rem; font-weight: 600; color: var(--danger);">${data.report.risk_assessment}</p>
+                    </div>
+                `;
+                
+                contentEl.innerHTML = html;
+            }
+
+            async runDeepDive() {
+                const tickerInput = document.getElementById('ticker-input');
+                if (!tickerInput) return;
+                
+                const ticker = tickerInput.value.trim().toUpperCase();
+                if (!ticker) {
+                    alert('Please enter a ticker symbol');
+                    return;
+                }
+                
+                this.showLoading('deepdive-results');
+                
+                try {
+                    const response = await fetch(`${this.API_BASE}/deep-dive/${ticker}`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) throw new Error(data.error || 'Deep dive failed');
+                    
+                    this.displayDeepDiveResults(data);
+                } catch (error) {
+                    console.error('Deep dive failed:', error);
+                    this.showError('deepdive-results', error.message);
+                }
+            }
+
+            displayDeepDiveResults(data) {
+                const container = document.getElementById('deepdive-results');
+                const metaEl = document.getElementById('deepdive-meta');
+                const contentEl = document.getElementById('deepdive-content');
+                
+                if (!container || !metaEl || !contentEl) return;
+                
+                container.className = 'results active';
+                metaEl.textContent = `Analysis for ${data.token} • ${new Date(data.analysis_time).toLocaleString()}`;
+                
+                const token = data.analysis.token_info;
+                const sentiment = data.analysis.social_sentiment;
+                
+                let html = `
+                    <div class="data-item">
+                        <h3>📊 ${token.name} (${token.symbol}) Overview</h3>
+                        <div class="metric">
+                            <span class="metric-label">Current Price</span>
+                            <span class="metric-value">${this.formatCurrency(token.current_price)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Market Cap</span>
+                            <span class="metric-value">${this.formatCurrency(token.market_cap, 0)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">24h Change</span>
+                            <span class="metric-value ${token.price_change_24h >= 0 ? 'metric-positive' : 'metric-negative'}">
+                                ${this.formatPercentage(token.price_change_24h)}
+                            </span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">30d Change</span>
+                            <span class="metric-value ${token.price_change_30d >= 0 ? 'metric-positive' : 'metric-negative'}">
+                                ${this.formatPercentage(token.price_change_30d)}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                
+                if (data.analysis.catalysts_7d && data.analysis.catalysts_7d.length > 0) {
+                    html += `
+                        <div class="data-item">
+                            <h3>📅 Recent Catalysts (7 Days)</h3>
+                            ${data.analysis.catalysts_7d.map(catalyst => 
+                                `<div class="metric">
+                                    <span class="metric-label">${catalyst.date}</span>
+                                    <span style="color: ${catalyst.impact === 'Positive' ? 'var(--success)' : 'var(--warning)'};">${catalyst.event}</span>
+                                </div>`
+                            ).join('')}
+                        </div>
+                    `;
+                }
+                
+                html += `
+                    <div class="data-item">
+                        <h3>💭 Social Sentiment Analysis</h3>
+                        <p style="text-align: center; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">
+                            Overall: ${sentiment.overall_sentiment}
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <h4 style="color: var(--success); margin-bottom: 0.5rem;">🚀 Bullish Points</h4>
+                                ${sentiment.bullish_points.map(point => 
+                                    `<p style="font-size: 0.875rem; margin: 0.25rem 0; color: var(--text-secondary);">• ${point}</p>`
+                                ).join('')}
+                            </div>
+                            <div>
+                                <h4 style="color: var(--warning); margin-bottom: 0.5rem;">⚠️ Bearish Points</h4>
+                                ${sentiment.bearish_points.map(point => 
+                                    `<p style="font-size: 0.875rem; margin: 0.25rem 0; color: var(--text-secondary);">• ${point}</p>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-item">
+                        <h3>💪 Strengths & ⚠️ Risks</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <h4 style="color: var(--success); margin-bottom: 0.5rem;">Strengths</h4>
+                                ${data.analysis.strengths.map(strength => 
+                                    `<p style="font-size: 0.875rem; margin: 0.25rem 0; color: var(--success);">✓ ${strength}</p>`
+                                ).join('')}
+                            </div>
+                            <div>
+                                <h4 style="color: var(--danger); margin-bottom: 0.5rem;">Risks</h4>
+                                ${data.analysis.risks.map(risk => 
+                                    `<p style="font-size: 0.875rem; margin: 0.25rem 0; color: var(--danger);">⚠ ${risk}</p>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                contentEl.innerHTML = html;
+            }
+        }
+
+        // Global functions for button clicks
+        function runAltcoinAnalysis() {
+            if (window.cryptoSuite) {
+                window.cryptoSuite.runAltcoinAnalysis();
+            }
+        }
+
+        function runBetaAnalysis() {
+            if (window.cryptoSuite) {
+                window.cryptoSuite.runBetaAnalysis();
+            }
+        }
+
+        function runDeFiScreener() {
+            if (window.cryptoSuite) {
+                window.cryptoSuite.runDeFiScreener();
+            }
+        }
+
+        function runMicroCapReport() {
+            if (window.cryptoSuite) {
+                window.cryptoSuite.runMicroCapReport();
+            }
+        }
+
+        function runDeepDive() {
+            if (window.cryptoSuite) {
+                window.cryptoSuite.runDeepDive();
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.cryptoSuite = new CryptoIntelligenceSuite();
+        });
+    </script>
+</body>
+</html>
