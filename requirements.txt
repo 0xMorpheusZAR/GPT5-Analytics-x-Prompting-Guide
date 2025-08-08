@@ -1,0 +1,18 @@
+# SuperClaude Crypto Analysis Suite Requirements
+# =============================================
+
+# Core Dependencies
+requests>=2.32.0
+pandas>=2.3.0
+numpy>=1.25.0
+flask>=3.1.0
+flask-cors>=6.0.0
+
+# Data Analysis
+scipy>=1.16.0
+
+# Optional - For enhanced features
+# velodata  # Velo Data API client (if available)
+
+# Development Dependencies (optional)
+python-dotenv>=1.0.0  # For environment variables
